@@ -1,8 +1,8 @@
 import '@/styles/globals.scss'
-import { Container } from '@mui/material';
 import type { AppProps } from 'next/app'
 import { useEffect, useState } from 'react';
-import NavBar from '@/components/NavBar';
+import { Box } from '@mui/system';
+import LoadingScreen from '@/components/Loader';
 
 // export default function App({ Component, pageProps }: AppProps) {
 //   return <Component {...pageProps} />
@@ -14,11 +14,19 @@ export default function App({ Component, pageProps }: AppProps) {
     typeof window !== 'undefined' ? localStorage.getItem('theme') || 'light' : ''
   );
 
+  const [appLoaded, setAppLoaded] = useState(false);
+
+  useEffect(() => {
+
+    setTimeout(()=> {
+      setAppLoaded(true);
+    }, 6000);
+  }, []);
+
   
   return (
-    <Container className={`App ${theme}`}>
-      <NavBar/>
-      <Component {...pageProps} />
-    </Container>
+    <Box className={`App ${theme}`}>
+      { appLoaded ? <Component {...pageProps} />: <LoadingScreen/>}
+    </Box>
   );
 }

@@ -1,0 +1,12 @@
+.preloaderWrapper {
+    display: flex;
+    width: 100%;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+
+    .loaderImg {
+        width: 40vw;
+        height: auto;
+    }
+}
