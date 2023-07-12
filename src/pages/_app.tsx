@@ -1,4 +1,6 @@
-import '@/styles/globals.scss'
+import '@/styles/globals.scss';
+import '@/styles/app.scss';
+import '@/styles/header.scss';
 import type { AppProps } from 'next/app'
 import { useEffect, useState } from 'react';
 import { Box } from '@mui/system';

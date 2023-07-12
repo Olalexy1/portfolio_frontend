@@ -21,7 +21,7 @@ import about04 from '../assets/about04.png';
 import profile from '../assets/profile.png';
 import circle from '../assets/circle.svg';
 
-import olaImg from '../assets/olaImg.png';
+import olaImg from '../assets/olaImgMinNew.png';
 import olaDevLogoDark from '../assets/olaDevLogoAlt.png';
 import olaDevLogoLight from '../assets/olaDevLogo.png';
 import preloader from '../assets/animatedPreloaderWhiteBg.gif';

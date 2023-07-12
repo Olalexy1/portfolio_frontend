@@ -86,7 +86,6 @@ const NavBar = () => {
     return (
       <nav className={myStyles.navItems}>
         {menuItems.map((item, index) => (
-          // <NextLink className={myStyles.links} key={index} href={item.link}>{item.text}</NextLink>
           <NextLink className={myStyles.links} key={`link-${item}`} href={`#${item}`}>{item.text}</NextLink>
         ))}
         <MaterialUISwitch onChange={toggleTheme} />
@@ -120,7 +119,6 @@ const NavBar = () => {
 
       <Drawer className={myStyles.customDrawer} anchor="left" open={isMobile ? isDrawerOpen : false} onClose={toggleDrawer}>
         <div className={myStyles.mobileNavbar} style={ theme === 'dark' ? { backgroundColor: '#333', color: '#fff' } : { backgroundColor: '#fff', color: '#000'} }>
-          {/* <NextLink href={"/"} className={myStyles.links} style={{ marginBottom: '30px' }}>Olalekan.dev</NextLink> */}
           <div className={myStyles.customLogoContainer}>
             <NextLink href={"/"} className={myStyles.links}>
               <Image src={theme === 'light' ? images.olaDevLogoLight : images.olaDevLogoDark} alt="logo"></Image>

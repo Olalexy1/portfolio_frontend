@@ -2,7 +2,8 @@ import Head from 'next/head'
 import Image from 'next/image'
 import { Inter } from 'next/font/google'
 import { Typography } from '@mui/material'
-import Layout from './layout'
+import Layout from './layout';
+import { Header } from '@/container';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -16,7 +17,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Layout>
-          <Typography>Home Page</Typography>
+          <Header/>
       </Layout>
     </>
   )
