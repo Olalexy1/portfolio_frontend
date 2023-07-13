@@ -6,6 +6,7 @@ const Layout = ({ children }: any) => {
         <Box
             sx={{
                 minHeight: '100vh',
+                padding: '0px',
             }}
         >
             <NavBar />

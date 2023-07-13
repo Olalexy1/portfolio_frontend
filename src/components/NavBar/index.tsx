@@ -12,9 +12,13 @@ import {
 } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
+import { BiSolidHomeAlt2 } from 'react-icons/bi';
+import { BsFillPersonFill, BsFillBriefcaseFill } from 'react-icons/bs';
+import { TiMessages } from 'react-icons/ti';
+import { GiSkills } from 'react-icons/gi';
 import NextLink from 'next/link';
 import myStyles from './navBar.module.scss';
-
+import { Icon } from '@mui/material';
 import MaterialUISwitch from '../Switch';
 import { images } from '@/util';
 import Image from "next/image";
@@ -62,23 +66,28 @@ const NavBar = () => {
   const menuItems = [
     {
       text: 'Home',
-      link: "/"
+      link: "/",
+      icon: <BiSolidHomeAlt2 />,
     },
     {
       text: 'About',
-      link: '/about'
+      link: '/about',
+      icon: <BsFillPersonFill />,
     },
     {
       text: 'Projects',
-      link: '/projects'
+      link: '/projects',
+      icon: <BsFillBriefcaseFill />,
     },
     {
       text: 'Skills',
-      link: '/skills'
+      link: '/skills',
+      icon: <GiSkills />,
     },
     {
       text: 'Contact',
-      link: '/contact'
+      link: '/contact',
+      icon: <TiMessages />,
     },
   ];
 
@@ -118,7 +127,7 @@ const NavBar = () => {
       </AppBar>
 
       <Drawer className={myStyles.customDrawer} anchor="left" open={isMobile ? isDrawerOpen : false} onClose={toggleDrawer}>
-        <div className={myStyles.mobileNavbar} style={ theme === 'dark' ? { backgroundColor: '#333', color: '#fff' } : { backgroundColor: '#fff', color: '#000'} }>
+        <div className={myStyles.mobileNavbar} style={theme === 'dark' ? { backgroundColor: '#333', color: '#fff' } : { backgroundColor: '#fff', color: '#000' }}>
           <div className={myStyles.customLogoContainer}>
             <NextLink href={"/"} className={myStyles.links}>
               <Image src={theme === 'light' ? images.olaDevLogoLight : images.olaDevLogoDark} alt="logo"></Image>
@@ -128,7 +137,11 @@ const NavBar = () => {
             </IconButton>
           </div>
           {menuItems.map((item, index) => (
-            <NextLink key={index} className={`${myStyles.links} ${myStyles.links_mobile}`} href={item.link}>{item.text}</NextLink>
+            <NextLink key={index} className={`${myStyles.links} ${myStyles.links_mobile}`} href={item.link}>
+              <Stack direction="row" spacing={2}>
+                {item.icon} &nbsp; &nbsp; {item.text}
+              </Stack>
+            </NextLink>
           ))}
           <div className={myStyles.mobileSwitch}>
             <MaterialUISwitch onChange={toggleTheme} />

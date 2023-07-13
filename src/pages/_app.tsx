@@ -1,14 +1,14 @@
 import '@/styles/globals.scss';
 import '@/styles/app.scss';
 import '@/styles/header.scss';
+import '@/styles/about.scss';
 import type { AppProps } from 'next/app'
 import { useEffect, useState } from 'react';
 import { Box } from '@mui/system';
 import LoadingScreen from '@/components/Loader';
+import { QueryClient, QueryClientProvider } from 'react-query';
 
-// export default function App({ Component, pageProps }: AppProps) {
-//   return <Component {...pageProps} />
-// }
+const queryClient = new QueryClient();
 
 export default function App({ Component, pageProps }: AppProps) {
   const [theme, setTheme] = useState(
@@ -20,15 +20,18 @@ export default function App({ Component, pageProps }: AppProps) {
 
   useEffect(() => {
 
-    setTimeout(()=> {
+    setTimeout(() => {
       setAppLoaded(true);
     }, 6000);
   }, []);
 
-  
+
   return (
-    <Box className={`App ${theme}`}>
-      { appLoaded ? <Component {...pageProps} />: <LoadingScreen/>}
-    </Box>
+    <QueryClientProvider client={queryClient}>
+      <Box className={`App ${theme}`}>
+        {appLoaded ? <Component {...pageProps} /> : <LoadingScreen />}
+      </Box>
+    </QueryClientProvider>
+
   );
 }

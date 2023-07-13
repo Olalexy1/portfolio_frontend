@@ -3,7 +3,7 @@ import Image from 'next/image'
 import { Inter } from 'next/font/google'
 import { Typography } from '@mui/material'
 import Layout from './layout';
-import { Header } from '@/container';
+import { Header, About } from '@/container';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -18,6 +18,7 @@ export default function Home() {
       </Head>
       <Layout>
           <Header/>
+          <About/>
       </Layout>
     </>
   )

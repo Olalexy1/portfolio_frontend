@@ -1,17 +1,23 @@
+import { Link } from '@mui/material';
 import React from 'react';
-import { BsTwitter, BsInstagram } from 'react-icons/bs';
-import { FaFacebookF } from 'react-icons/fa';
+import { BsTwitter, BsLinkedin, BsGithub } from 'react-icons/bs';
 
 const SocialMedia = () => (
   <div className="app__social">
     <div>
-      <BsTwitter />
+      <Link href="https://www.linkedin.com/in/ajayiolalekan/" color="inherit" underline="none" className='socialIcon'>
+        <BsLinkedin />
+      </Link>
     </div>
     <div>
-      <FaFacebookF />
+      <Link href="https://github.com/Olalexy1" color="inherit" underline="none" className='socialIcon'>
+        <BsGithub />
+      </Link>
     </div>
     <div>
-      <BsInstagram />
+      <Link href="#" color="inherit" underline="none" className='socialIcon'>
+        <BsTwitter />
+      </Link>
     </div>
   </div>
 );

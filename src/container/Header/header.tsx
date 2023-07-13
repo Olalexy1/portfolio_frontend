@@ -5,7 +5,6 @@ import { images } from '@/util';
 import Image from "next/image";
 import NextLink from 'next/link';
 import { AppWrap } from '@/components/Wrapper';
-import myStyles from './header.module.scss';
 import Typography from '@mui/material/Typography';
 
 const scaleVariants = {
@@ -62,76 +61,61 @@ const Typewriter = () => {
     );
 };
 
-const HeaderComp = () => {
+const Header: React.FC = () => (
 
-    return (
-        <div className="app__header app__flex">
-            <motion.div
-                whileInView={{ x: [-100, 0], opacity: [0, 1] }}
-                transition={{ duration: 0.5 }}
-                className="app__header-info"
-            >
-                <div className="app__header-badge">
-                    <div className="badge-cmp app__flex">
-                        <span>👋</span>
-                        <div style={{ marginLeft: '10px' }}>
-                            <p className="p-text">Hello, I am</p>
-                            {/* <h1 className="head-text">Olalekan</h1> */}
-                            <Typewriter />
-                        </div>
+    <div className="app__header app__flex">
+        <motion.div
+            whileInView={{ x: [-100, 0], opacity: [0, 1] }}
+            transition={{ duration: 0.5 }}
+            className="app__header-info"
+        >
+            <div className="app__header-badge">
+
+                <div className="badge-cmp app__flex">
+                    <span>👋</span>
+                    <div style={{ marginLeft: '10px' }}>
+                        <p className="p-text">Hello, I am</p>
+                        <Typewriter />
                     </div>
-
-                    <div className="tag-cmp app__flex">
-                        {/* <p className="p-text">A passionate Frontend React Developer based in Lagos, Nigeria</p>
-                        <p className="p-text">Building the Frontend of Web and Mobile Applications</p>
-                        <p className="p-text">that leads to the success of the overall product.</p> */}
-                        <p className='p-text'>
-                            A passionate Frontend React Developer based in Lagos, Nigeria. Building the Frontend of Web and Mobile Applications that leads to the success of the overall product.
-                        </p>
-                    </div>
-
-                    <button> Projects </button>
                 </div>
-            </motion.div>
 
-            <motion.div
-                whileInView={{ opacity: [0, 1] }}
-                transition={{ duration: 0.5, delayChildren: 0.5 }}
-                className="app__header-img"
-            >
-                <Image src={images.olaImg} alt="profile_bg" />
-                {/* <motion.img
-                    whileInView={{ scale: [0, 1] }}
-                    transition={{ duration: 1, ease: 'easeInOut' }}
-                    src={images.circle}
-                    alt="profile_circle"
-                    className="overlay_circle"
-                /> */}
-            </motion.div>
+                <div className="tag-cmp app__flex">
+                    <p className='p-text'>
+                        A passionate Frontend React Developer based in Lagos, Nigeria. Building the Frontend of Web and Mobile Applications that leads to the success of the overall product.
+                    </p>
+                </div>
 
-            <motion.div
-                variants={scaleVariants}
-                whileInView={scaleVariants.whileInView}
-                className="app__header-circles"
-            >
-                {[images.typescript, images.react, images.sass].map((circle, index) => (
-                    <div className="circle-cmp app__flex" key={`circle-${index}`}>
-                        <Image src={circle} alt="profile_bg" />
-                    </div>
-                ))}
-            </motion.div>
-        </div>
-    )
+            </div>
+        </motion.div>
 
-};
+        <motion.div
+            whileInView={{ opacity: [0, 1] }}
+            transition={{ duration: 0.5, delayChildren: 0.5 }}
+            className="app__header-img"
+        >
+            <Image src={images.olaImg} alt="profile_bg" />
+            {/* <motion.img
+                whileInView={{ scale: [0, 1] }}
+                transition={{ duration: 1, ease: 'easeInOut' }}
+                src={images.circle}
+                alt="profile_circle"
+                className="overlay_circle"
+            /> */}
+        </motion.div>
 
-const Header = () => {
-    return (
-        <AppWrap idName={'home'}>
-            <HeaderComp />
-        </AppWrap>
-    )
-}
+        <motion.div
+            variants={scaleVariants}
+            whileInView={scaleVariants.whileInView}
+            className="app__header-circles"
+        >
+            {[images.typescript, images.react, images.sass].map((circle, index) => (
+                <div className="circle-cmp app__flex" key={`circle-${index}`}>
+                    <Image src={circle} alt="profile_bg" />
+                </div>
+            ))}
+        </motion.div>
+    </div>
+);
 
-export default Header;
+export default AppWrap(Header, { idName: 'home' });
 
