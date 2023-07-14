@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import Layout from './layout';
-import { Header, About, Projects, Skills } from '@/container';
+import { Header, About, Projects, Skills, Footer } from '@/container';
 
 export default function Home() {
   return (
@@ -17,6 +17,7 @@ export default function Home() {
         <About />
         <Projects/>
         <Skills/>
+        <Footer/>
       </Layout>
     </>
   )
