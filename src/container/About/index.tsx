@@ -28,7 +28,7 @@ const About: React.FC = () => {
 
     // console.log(abouts, 'about')
 
-    const { isLoading, abouts } = useFindAllAbouts();
+    const { abouts } = useFindAllAbouts();
 
     console.log(abouts, 'aboutData')
 

@@ -45,8 +45,9 @@
     align-items: center;
 
     .app__work-item {
-        width: 270px;
-        height: 500px;
+        max-width: 370px;
+        min-width: 270px;
+        height: auto;
         flex-direction: column;
         border: 1px solid rgba(60, 214, 235, 0.454);
         margin: 2rem;
@@ -181,7 +182,7 @@
 .app__work-content {
     padding: 0.5rem;
     width: 100%;
-    height: 275px;
+    height: 225px;
     position: relative;
     flex-direction: column;
     cursor: pointer;

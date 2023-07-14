@@ -26,23 +26,7 @@ const Projects: React.FC = () => {
     const [projects, setProjects] = useState<ProjectData[]>([]);
     const [filterProject, setFilterProject] = useState<ProjectData[]>([]);
     const [activeFilter, setActiveFilter] = useState('All');
-    // const [animateCard, setAnimateCard] = useState<{ y: number; opacity: number }[]>([
-    //     { y: 0, opacity: 1 },
-    // ]);
-
     const [animateCard, setAnimateCard] = useState<AnimateCardState>({ y: 0, opacity: 1 });
-
-    // const [animateCard, setAnimateCard] = useState<{ y: number; opacity: number }[]>([
-    //     { y: 0, opacity: 1 },
-    // ]);
-
-    // const [animateCard, setAnimateCard] = useState<TargetAndTransition | Variants | undefined>(
-    //     { y: 0, opacity: 1 }
-    // );
-
-    // const [animateCard, setAnimateCard] = useState<TargetAndTransition>({
-    //     y: 0, opacity: 1,
-    // });
 
     useEffect(() => {
         const query = '*[_type == "projects"]';
@@ -75,7 +59,7 @@ const Projects: React.FC = () => {
             </h2>
 
             <div className="app__work-filter">
-                {['Web App', 'Mobile App', 'React JS', 'React Native', 'Next Js', 'TypeScript', 'All'].map((item, index) => (
+                {['Web App', 'Mobile App', 'React Js', 'React Native', 'Next Js', 'TypeScript', 'All'].map((item, index) => (
                     <div
                         key={index}
                         onClick={() => handleWorkFilter(item)}

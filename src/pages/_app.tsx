@@ -3,6 +3,7 @@ import '@/styles/app.scss';
 import '@/styles/header.scss';
 import '@/styles/about.scss';
 import '@/styles/projects.scss';
+import '@/styles/skills.scss';
 import type { AppProps } from 'next/app';
 import { useEffect, useState } from 'react';
 import { Box } from '@mui/system';

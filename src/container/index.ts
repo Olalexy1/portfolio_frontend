@@ -1,9 +1,13 @@
-import Header from "./Header/header";
-import About from "./About/about";
-import Projects from "./Projects/projects";
+import Header from "./Header";
+import About from "./About";
+import Projects from "./Projects";
+import Skills from "./Skills"
 
 export {
     Header,
     About,
-    Projects
+    Projects,
+    Skills
 };
+
+export default Header;
