@@ -10,7 +10,7 @@ interface AboutData {
 }
 
 const fetchAbouts = async () => {
-  const query = '*[_type == "abouts"]';
+  const query = '*[_type == "about"]';
   const data = await client.fetch<AboutData[]>(query);
   return data;
 };
@@ -18,7 +18,7 @@ const fetchAbouts = async () => {
 const useFindAllAbouts = () => {
   const [abouts, setAbouts] = useState<AboutData[]>([]);
 
-  const { isLoading, error, data } = useQuery('abouts', fetchAbouts);
+  const { isLoading, error, data } = useQuery('about', fetchAbouts);
 
   useEffect(() => {
     if (data) {

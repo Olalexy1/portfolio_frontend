@@ -15,22 +15,22 @@ interface AboutData {
 
 
 const About: React.FC = () => {
-    const [abouts, setAbouts] = useState<AboutData[]>([]);
+    // const [abouts, setAbouts] = useState<AboutData[]>([]);
 
-    useEffect(() => {
-        const query = '*[_type == "about"]';
+    // useEffect(() => {
+    //     const query = '*[_type == "about"]';
 
-        client.fetch<AboutData[]>(query).then((data) => {
-            setAbouts(data);
-        });
+    //     client.fetch<AboutData[]>(query).then((data) => {
+    //         setAbouts(data);
+    //     });
 
-    }, []);
+    // }, []);
 
-    console.log(abouts, 'about')
+    // console.log(abouts, 'about')
 
-    // const { isLoading, error, abouts: aboutsData } = useFindAllAbouts();
+    const { isLoading, abouts } = useFindAllAbouts();
 
-    // console.log(aboutsData, 'aboutData')
+    console.log(abouts, 'aboutData')
 
     // if (isLoading) {
     //     return <div>Loading...</div>;

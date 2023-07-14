@@ -1,0 +1,208 @@
+.app__works {
+    flex: 1;
+    width: 100%;
+    flex-direction: column;
+}
+
+.app__work-filter {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 2rem 0 2rem;
+
+    .app__work-filter-item {
+        padding: 0.5rem 1rem;
+        border-radius: 0.5rem;
+        background-color: #fff;
+        color: #000;
+        font-weight: 800;
+        cursor: pointer;
+        margin: 0.5rem;
+
+        &:hover {
+            background-color: var(--secondary-color);
+            color: #fff;
+        }
+
+        @media screen and (min-width: 2000px) {
+            padding: 1rem 2rem;
+            border-radius: 0.85rem;
+        }
+    }
+
+    .item-active {
+        background-color: var(--secondary-color);
+        color: #fff;
+    }
+}
+
+.app__work-portfolio {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+
+    .app__work-item {
+        width: 270px;
+        height: 500px;
+        flex-direction: column;
+        border: 1px solid rgba(60, 214, 235, 0.454);
+        margin: 2rem;
+        padding: 1rem;
+        border-radius: 0.5rem;
+        background-color: #fff;
+        color: #000;
+        position: relative;
+        overflow: hidden;
+
+        cursor: pointer;
+        transition: all 0.3s ease;
+
+        &:hover {
+            box-shadow: 0 0 25px rgba(60, 214, 235, 0.2);
+        }
+
+
+        @media screen and (min-width: 2000px) {
+            width: 470px;
+            padding: 1.25rem;
+            border-radius: 0.75rem;
+        }
+
+        @media screen and (max-width: 300px) {
+            width: 100%;
+            margin: 1rem;
+        }
+
+        .tag-content {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: flex-start;
+            text-align: center;
+            gap: 10px;
+            background: linear-gradient(45deg, rgba(60, 214, 235, 1) 10%, #3CD6EB 100%);
+            color: #fff;
+            padding: 20px;
+            line-height: 1.5;
+            border-radius: 0.5rem;
+            pointer-events: none;
+            transform: translateY(96%);
+            transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
+        }
+
+        .app__work-tag {
+            position: absolute;
+            padding: 0.3rem 0.5rem;
+            border-radius: 10px 10px 0px 0px;
+            color: #fff;
+            background-color: rgba(60, 214, 235, 2.54);
+            bottom: -3px;
+            z-index: 10px;
+            cursor: pointer;
+            transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
+
+            p {
+                transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1)
+            }
+        }
+
+        &:hover .tag-content {
+            transform: translateY(52%);
+        }
+
+        &:hover .app__work-tag p {
+            transform: translateX(20%);
+            opacity: 0;
+        }
+
+    }
+}
+
+.app__work-img {
+    width: 100%;
+    height: 230px;
+    position: relative;
+
+    img {
+        width: 100%;
+        height: 100%;
+        border-radius: 0.5rem;
+        object-fit: cover;
+    }
+
+    @media screen and (min-width: 2000px) {
+        height: 350px;
+    }
+}
+
+.app__work-hover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+
+    border-radius: 0.5rem;
+    opacity: 0;
+    transition: all 0.3s ease;
+
+    div {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background-color: rgba(0, 0, 0, 0.5);
+        color: #fff;
+
+        margin: 1rem;
+        font-family: var(--font-base);
+        font-weight: 800;
+        cursor: pointer;
+        transition: all 0.3s ease;
+
+        svg {
+            width: 50%;
+            height: 50%;
+            color: var(--white-color);
+        }
+    }
+}
+
+.app__work-content {
+    padding: 0.5rem;
+    width: 100%;
+    height: 275px;
+    position: relative;
+    flex-direction: column;
+    cursor: pointer;
+
+    h4 {
+        margin-top: 1rem;
+        line-height: 1.5;
+
+        @media screen and (min-width: 2000px) {
+            margin-top: 3rem;
+        }
+    }
+
+    .p-text {
+        font-size: 0.8rem;
+        text-align: left;
+        color: var(--gray-color);
+        line-height: 1.5;
+        font-weight: 500;
+        // max-height: 3.2em; /* Set the maximum height to three lines */
+        word-wrap: break-word;
+    }
+
+}

@@ -2,7 +2,8 @@ import '@/styles/globals.scss';
 import '@/styles/app.scss';
 import '@/styles/header.scss';
 import '@/styles/about.scss';
-import type { AppProps } from 'next/app'
+import '@/styles/projects.scss';
+import type { AppProps } from 'next/app';
 import { useEffect, useState } from 'react';
 import { Box } from '@mui/system';
 import LoadingScreen from '@/components/Loader';
@@ -12,7 +13,6 @@ const queryClient = new QueryClient();
 
 export default function App({ Component, pageProps }: AppProps) {
   const [theme, setTheme] = useState(
-    // localStorage.getItem('theme') || 'light'
     typeof window !== 'undefined' ? localStorage.getItem('theme') || 'light' : ''
   );
 
