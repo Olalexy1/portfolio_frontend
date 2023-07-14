@@ -2,14 +2,14 @@ import Header from "./Header";
 import About from "./About";
 import Projects from "./Projects";
 import Skills from "./Skills";
-import Footer from "./Footer";
+import Contact from "./Contact";
 
 export {
     Header,
     About,
     Projects,
     Skills,
-    Footer
+    Contact
 };
 
 export default Header;

@@ -4,6 +4,7 @@ import '@/styles/header.scss';
 import '@/styles/about.scss';
 import '@/styles/projects.scss';
 import '@/styles/skills.scss';
+import '@/styles/contact.scss';
 import '@/styles/footer.scss';
 import type { AppProps } from 'next/app';
 import { useEffect, useState } from 'react';
