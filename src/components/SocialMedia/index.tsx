@@ -15,7 +15,7 @@ const SocialMedia = () => (
       </Link>
     </div>
     <div>
-      <Link href="#" color="inherit" underline="none" className='socialIcon'>
+      <Link href="https://twitter.com/Olalexy007" color="inherit" underline="none" className='socialIcon'>
         <BsTwitter />
       </Link>
     </div>

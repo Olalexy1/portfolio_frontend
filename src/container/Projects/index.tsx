@@ -130,7 +130,7 @@ const Projects: React.FC = () => {
                         <div className='tag-content'>
                             <Stack direction='column' height='45%'>
                                 {project.tags.map((item, index) => (
-                                    <p className="p-text" key={index}>{item},&nbsp;</p>
+                                    <p className="p-text" key={index}>{item}&nbsp;</p>
                                 ))}
                             </Stack>
                         </div>

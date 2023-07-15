@@ -14,6 +14,11 @@ const Contact: React.FC = () => {
     const [formData, setFormData] = useState<FormData>({ name: '', email: '', message: '' });
     const [isFormSubmitted, setIsFormSubmitted] = useState(false);
     const [loading, setLoading] = useState(false);
+    const [isFocused, setIsFocused] = useState({
+        nameInput: false,
+        emailInput: false,
+        messageInput: false
+    });
 
     const { name, email, message } = formData;
 
@@ -40,6 +45,20 @@ const Contact: React.FC = () => {
             .catch((err) => console.log(err));
     };
 
+    const handleFocus = (inputName: any) => {
+        setIsFocused(prevState => ({
+            ...prevState,
+            [inputName]: true
+        }));
+    };
+
+    const handleBlur = (inputName: any) => {
+        setIsFocused(prevState => ({
+            ...prevState,
+            [inputName]: false
+        }));
+    };
+
     return (
         <>
             <h2 className="head-text">Send Me a message!</h2>
@@ -48,7 +67,7 @@ const Contact: React.FC = () => {
             <p>You can use my contact below or submit the form.</p>
             <p>I am very responsive to messages </p>
 
-            <div className="app__footer-cards">
+            <div className="app__contact-cards">
                 <div className="app__footer-card ">
                     <Image
                         width={45}
@@ -57,7 +76,7 @@ const Contact: React.FC = () => {
                         alt='email' />
                     <a href="mailto:ajayiolalekan729@gmail.com" className="p-text">ajayiolalekan729@gmail.com</a>
                 </div>
-                <div className="app__footer-card">
+                <div className="app__contact-card">
                     <Image
                         width={45}
                         height={45}
@@ -67,23 +86,41 @@ const Contact: React.FC = () => {
                 </div>
             </div>
             {!isFormSubmitted ? (
-                <div className="app__footer-form app__flex">
+                <div className="app__contact-form app__flex">
                     <div className="app__flex">
-                        <input className="p-text" type="text" placeholder="Enter your Name" name="name" value={name} onChange={handleChangeInput} />
+                        <input
+                            className="p-text"
+                            type="text"
+                            placeholder={isFocused.nameInput ? '' : 'Enter your Name'}
+                            name="name"
+                            value={name}
+                            onChange={handleChangeInput}
+                            onFocus={handleFocus}
+                            onBlur={handleBlur} />
                     </div>
                     <div className="app__flex">
-                        <input className="p-text" type="email" placeholder="Enter your Email" name="email" value={email} onChange={handleChangeInput} />
+                        <input
+                            className="p-text"
+                            type="email"
+                            placeholder={isFocused.emailInput ? '' : 'Enter your Email'}
+                            name="email"
+                            value={email}
+                            onChange={handleChangeInput}
+                            onFocus={handleFocus}
+                            onBlur={handleBlur} />
                     </div>
                     <div>
                         <textarea
                             className="p-text"
-                            placeholder="Hi, I think we need a web application. How soon can we discuss this?"
+                            placeholder={isFocused.emailInput ? '' : 'Hi, I think we need a web application. How soon can we discuss this?'}
                             value={message}
                             name="message"
                             onChange={handleChangeInput}
+                            onFocus={handleFocus}
+                            onBlur={handleBlur}
                         />
                     </div>
-                    <button type="button" className="p-text" onClick={handleSubmit}>{!loading ? 'Send Message' : 'Sending...'}</button>
+                    <button id='button' type="button" className="p-text" onClick={handleSubmit}>{!loading ? 'Send Message' : 'Sending...'}</button>
                 </div>
             ) : (
                 <div>
@@ -97,6 +134,6 @@ const Contact: React.FC = () => {
 };
 
 export default AppWrap(
-    MotionWrap(Contact, { classNames: 'app__footer' }),
+    MotionWrap(Contact, { classNames: 'app__contact' }),
     { idName: 'contact', classNames: '' }
 );

@@ -53,6 +53,9 @@ const NavBar = () => {
     }
   };
 
+  const [activeLink, setActiveLink] = useState(0);
+  const [activeMobileLink, setActiveMobileLink] = useState(0);
+
   useEffect(() => {
     localStorage.setItem('theme', theme);
     document.body.className = theme;
@@ -95,7 +98,13 @@ const NavBar = () => {
     return (
       <nav className={myStyles.navItems}>
         {menuItems.map((item, index) => (
-          <NextLink className={myStyles.links} key={`link-${item}`} href={`#${item}`}>{item.text}</NextLink>
+          <NextLink
+            onClick={() => setActiveLink(index)}
+            className={myStyles.links}
+            style={index === activeLink ? { color: '#3CD6EB' } : {}}
+            key={`link-${item}`}
+            href={`#${item.text.toLowerCase()}`}>{item.text}
+          </NextLink>
         ))}
         <MaterialUISwitch onChange={toggleTheme} />
       </nav>
@@ -137,7 +146,12 @@ const NavBar = () => {
             </IconButton>
           </div>
           {menuItems.map((item, index) => (
-            <NextLink key={index} className={`${myStyles.links} ${myStyles.links_mobile}`} href={item.link}>
+            <NextLink
+              key={index}
+              onClick={() => setActiveLink(index)}
+              className={`${myStyles.links} ${myStyles.links_mobile}`}
+              style={index === activeLink ? { color: '#3CD6EB' } : {}}
+              href={`#${item.text.toLowerCase()}`}>
               <Stack direction="row" spacing={2}>
                 {item.icon} &nbsp; &nbsp; {item.text}
               </Stack>

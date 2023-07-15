@@ -1,4 +1,4 @@
-.app__footer {
+.app__contact {
     flex: 1;
     width: 100%;
     flex-direction: column;
@@ -8,7 +8,7 @@
     }
 }
 
-.app__footer-cards {
+.app__contact-cards {
     width: 60%;
     display: flex;
     justify-content: space-evenly;
@@ -16,7 +16,7 @@
     flex-wrap: wrap;
     margin: 4em 2rem 2rem;
 
-    .app__footer-card {
+    .app__contact-card {
         min-width: 290px;
         display: flex;
         flex-direction: row;
@@ -60,15 +60,15 @@
     }
 }
 
-.app__footer-cards .app__footer-card:last-child {
+.app__contact-cards .app__contact-card:last-child {
     background-color: #f2f7fb;
 }
 
-.app__footer-cards .app__footer-card:last-child:hover {
+.app__contact-cards .app__contact-card:last-child:hover {
     box-shadow: 0 0 25px #f2f7fb;
 }
 
-.app__footer-form {
+.app__contact-form {
     width: 60%;
     flex-direction: column;
     margin: 1rem 2rem;
@@ -105,24 +105,50 @@
         }
     }
 
-    button {
-        padding: 1rem 2rem;
-        border-radius: 10px;
+    // button {
+    //     padding: 1rem 2rem;
+    //     border-radius: 10px;
+    //     border: none;
+    //     background-color: var(--secondary-color);
+
+    //     font-weight: 500;
+    //     color: var(--white-color);
+    //     outline: none;
+    //     margin: 2rem 0 0 0;
+    //     font-family: var(--font-base);
+
+    //     transition: cubic-bezier(0.55, 0.085, 0.68, 0.53);
+    //     cursor: pointer;
+
+    //     &:hover {
+    //         background-color: #2430af;
+    //     }
+    // }
+
+    #button {
+        padding-left: 33px;
+        padding-right: 33px;
+        padding-bottom: 16px;
+        padding-top: 16px;
+        border-radius: 9px;
+        background: #3CD6EB;
         border: none;
-        background-color: var(--secondary-color);
-
-        font-weight: 500;
-        color: var(--white-color);
-        outline: none;
-        margin: 2rem 0 0 0;
-        font-family: var(--font-base);
-
-        transition: cubic-bezier(0.55, 0.085, 0.68, 0.53);
+        font-family: inherit;
+        text-align: center;
         cursor: pointer;
+        transition: 0.4s;
+        margin-top: 3rem;
+        border-radius: 15px;
+        font-size: 17px;
+    }
 
-        &:hover {
-            background-color: #2430af;
-        }
+    #button:hover {
+        box-shadow: 7px 5px 56px -14px #3CD6EB;
+    }
+
+    #button:active {
+        transform: scale(0.97);
+        box-shadow: 7px 5px 56px -10px #3CD6EB;
     }
 
     @media screen and (max-width: 768px) {
