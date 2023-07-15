@@ -1,18 +1,21 @@
 import React from 'react';
-import { Stack } from '@mui/material';
+import { Stack, useMediaQuery, useTheme } from '@mui/material';
 import NextLink from 'next/link';
 import { motion } from 'framer-motion';
 
 
 const Footer = () => {
+    const navTheme = useTheme();
+    const isMobile = useMediaQuery(navTheme.breakpoints.down('md'));
+
     return (
         <div className='app__footer app__flex'>
-            <Stack direction="row" spacing={2} width={'100%'}>
-                <div>
+            <Stack direction={isMobile ? "column" : "row"} spacing={2} width={'100%'}>
+                <div className='app__footer-desc'>
                     <h4>Ajayi Olalekan Bamidele</h4>
-                    <p className='p-text'>A passionate Frontend React Developer based in Lagos, Nigeria. Building the Frontend of Web and Mobile Applications that leads to the success of the overall product.</p>
+                    <p>A passionate Frontend React Developer based in Lagos, Nigeria. Building the Frontend of Web and Mobile Applications that leads to the success of the overall product.</p>
                 </div>
-                <div>
+                <div className='app__footer-links'>
 
                 </div>
             </Stack>

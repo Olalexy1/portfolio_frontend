@@ -3,10 +3,39 @@
     height: max-content;
     padding: 20px;
     position: relative;
-
+    display: flex;
     flex: 1;
     width: 100%;
-    flex-direction: column;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    .app__footer-desc {
+        width: 100%;
+        border: 1px solid red;
+
+        h4 {
+            font-size: 1.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        p {
+            margin-top: 1.5rem;
+            color: #eee;
+            font-size: 1.2rem;
+            line-height: 1.7;
+            font-weight: 500;
+        }
+    }
+
+    .app__footer-links {
+        width: 100%;
+        border: 1px solid black;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+    }
 
     @media screen and (max-width: 768px) {
         flex-direction: column;
