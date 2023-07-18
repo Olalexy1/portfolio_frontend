@@ -5,6 +5,7 @@ import { AppWrap, MotionWrap } from '@/components/Wrapper';
 import { urlFor, client } from '../../client';
 import Image, { StaticImageData } from "next/image";
 import Stack from '@mui/material/Stack';
+import NextLink from 'next/link';
 
 interface ProjectData {
     _type: string;
@@ -90,7 +91,7 @@ const Projects: React.FC = () => {
                                 transition={{ duration: 0.25, ease: 'easeInOut', staggerChildren: 0.5 }}
                                 className="app__work-hover app__flex"
                             >
-                                <a href={project.projectLink} target="_blank" rel="noreferrer">
+                                <a href={project?.projectLink} target="_blank" rel="noreferrer">
                                     <motion.div
                                         whileInView={{ scale: [0, 1] }}
                                         whileHover={{ scale: [1, 0.9] }}
@@ -100,7 +101,7 @@ const Projects: React.FC = () => {
                                         <AiFillEye />
                                     </motion.div>
                                 </a>
-                                <a href={project.codeLink} target="_blank" rel="noreferrer">
+                                <a href={project?.codeLink} target="_blank" rel="noreferrer">
                                     <motion.div
                                         whileInView={{ scale: [0, 1] }}
                                         whileHover={{ scale: [1, 0.9] }}
@@ -119,12 +120,6 @@ const Projects: React.FC = () => {
                                 {project.description}
                             </p>
 
-                            {/* <motion.div className="app__work-tag app__flex"
-                                // initial={{ opacity: 0 }}
-                                whileHover={{ y: 0, opacity: 1 }}
-                                transition={{ duration: 0.25, ease: 'easeInOut', staggerChildren: 0.5 }}>
-                                <p className="p-text" style={{ color: '#000' }}>Technology Used</p>
-                            </motion.div> */}
                         </div>
 
                         <div className='tag-content'>

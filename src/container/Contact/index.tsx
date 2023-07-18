@@ -68,21 +68,21 @@ const Contact: React.FC = () => {
             <p>I am very responsive to messages </p>
 
             <div className="app__contact-cards">
-                <div className="app__footer-card ">
+                <div className="app__contact-card ">
                     <Image
                         width={45}
                         height={45}
                         src={images.email}
                         alt='email' />
-                    <a href="mailto:ajayiolalekan729@gmail.com" className="p-text">ajayiolalekan729@gmail.com</a>
+                    <a href="mailto:ajayiolalekan729@gmail.com">ajayiolalekan729@gmail.com</a>
                 </div>
                 <div className="app__contact-card">
                     <Image
                         width={45}
                         height={45}
-                        src={images.mobile}
+                        src={images.phone}
                         alt='mobile' />
-                    <a href="tel: +2348188394639" className="p-text">+2348188394639</a>
+                    <a href="tel: +2348188394639">+2348188394639</a>
                 </div>
             </div>
             {!isFormSubmitted ? (

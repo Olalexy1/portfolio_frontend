@@ -19,8 +19,8 @@
     .app__contact-card {
         min-width: 290px;
         display: flex;
-        flex-direction: row;
-        justify-content: flex-start;
+        flex-direction: column;
+        justify-content: center;
         align-items: center;
 
         margin: 1rem 0;
@@ -43,7 +43,9 @@
 
         a {
             text-decoration: none;
+            margin-top: 5px;
             font-weight: 500;
+            color: #222
         }
 
         &:hover {

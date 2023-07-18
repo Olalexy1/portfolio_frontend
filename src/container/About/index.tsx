@@ -15,26 +15,8 @@ interface AboutData {
 
 
 const About: React.FC = () => {
-    // const [abouts, setAbouts] = useState<AboutData[]>([]);
-
-    // useEffect(() => {
-    //     const query = '*[_type == "about"]';
-
-    //     client.fetch<AboutData[]>(query).then((data) => {
-    //         setAbouts(data);
-    //     });
-
-    // }, []);
-
-    // console.log(abouts, 'about')
 
     const { abouts } = useFindAllAbouts();
-
-    console.log(abouts, 'aboutData')
-
-    // if (isLoading) {
-    //     return <div>Loading...</div>;
-    // }
 
     return (
         <>

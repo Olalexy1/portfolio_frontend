@@ -1,5 +1,6 @@
 import email from '../assets/email.png';
-import mobile from '../assets/mobile.png';
+// import mobile from '../assets/mobile.png';
+import phone from '../assets/phone.png';
 import api from '../assets/api.png';
 import css from '../assets/css.png';
 import git from '../assets/git.png';
@@ -28,7 +29,7 @@ import preloader from '../assets/animatedPreloaderWhiteBg.gif';
 
 export default {
   email,
-  mobile,
+  phone,
   api,
   css,
   git,
