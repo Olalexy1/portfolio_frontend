@@ -60,7 +60,7 @@ const Projects: React.FC = () => {
             </h2>
 
             <div className="app__work-filter">
-                {['Web App', 'Mobile App', 'React Js', 'React Native', 'Next Js', 'TypeScript', 'All'].map((item, index) => (
+                {['All', 'Web App', 'Mobile App', 'React Js', 'React Native', 'Next Js', 'TypeScript'].map((item, index) => (
                     <div
                         key={index}
                         onClick={() => handleWorkFilter(item)}
@@ -123,11 +123,11 @@ const Projects: React.FC = () => {
                         </div>
 
                         <div className='tag-content'>
-                            <Stack direction='column' height='45%'>
+                            <div>
                                 {project.tags.map((item, index) => (
                                     <p className="p-text" key={index}>{item}&nbsp;</p>
                                 ))}
-                            </Stack>
+                            </div>
                         </div>
 
                         <motion.div className="app__work-tag app__flex"

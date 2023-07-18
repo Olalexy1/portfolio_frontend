@@ -61,11 +61,9 @@ const Contact: React.FC = () => {
 
     return (
         <>
-            <h2 className="head-text">Send Me a message!</h2>
+            <h2 className="head-text">Send Me a <span>Message!</span></h2>
 
-            <p>Got an inquiry or proposal, or just want to say hello? Go ahead. </p>
-            <p>You can use my contact below or submit the form.</p>
-            <p>I am very responsive to messages </p>
+            <p className="contact-text">Got an inquiry or proposal, Go ahead. You can use my contact below or submit the form. I am very responsive to messages.</p>
 
             <div className="app__contact-cards">
                 <div className="app__contact-card ">

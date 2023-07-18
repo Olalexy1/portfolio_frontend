@@ -8,13 +8,21 @@
     }
 }
 
+.contact-text {
+    text-align: center;
+    margin: auto;
+    max-width: 80vw;
+    margin-top: 20px;
+    font-family: 'Oswald', sans-serif;
+}
+
 .app__contact-cards {
     width: 60%;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
     flex-wrap: wrap;
-    margin: 4em 2rem 2rem;
+    margin: 2em 2rem 2rem;
 
     .app__contact-card {
         min-width: 290px;
@@ -37,15 +45,13 @@
             margin: 0 0.7rem;
         }
 
-        p {
-            font-weight: 500;
-        }
-
         a {
             text-decoration: none;
             margin-top: 5px;
             font-weight: 500;
-            color: #222
+            color: #222;
+            font-family: 'Oswald', sans-serif;
+            
         }
 
         &:hover {
@@ -92,8 +98,7 @@
             border: none;
             border-radius: 7px;
             background-color: var(--primary-color);
-
-            font-family: var(--font-base);
+            font-family: 'Oswald', sans-serif;
             color: var(--secondary-color);
             outline: none;
         }
@@ -107,26 +112,6 @@
         }
     }
 
-    // button {
-    //     padding: 1rem 2rem;
-    //     border-radius: 10px;
-    //     border: none;
-    //     background-color: var(--secondary-color);
-
-    //     font-weight: 500;
-    //     color: var(--white-color);
-    //     outline: none;
-    //     margin: 2rem 0 0 0;
-    //     font-family: var(--font-base);
-
-    //     transition: cubic-bezier(0.55, 0.085, 0.68, 0.53);
-    //     cursor: pointer;
-
-    //     &:hover {
-    //         background-color: #2430af;
-    //     }
-    // }
-
     #button {
         padding-left: 33px;
         padding-right: 33px;
@@ -135,7 +120,7 @@
         border-radius: 9px;
         background: #3CD6EB;
         border: none;
-        font-family: inherit;
+        font-family: 'Oswald', sans-serif;
         text-align: center;
         cursor: pointer;
         transition: 0.4s;

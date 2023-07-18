@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
-
 import { images } from '@/util';
 import Image from "next/image";
 import NextLink from 'next/link';
 import { AppWrap } from '@/components/Wrapper';
-import Typography from '@mui/material/Typography';
+
 
 const scaleVariants = {
     whileInView: {
@@ -85,7 +84,7 @@ const Header: React.FC = () => (
                     </p>
                 </div>
 
-                <NextLink id='button' className="p-text" href="#projects">My Résumé</NextLink>
+                <NextLink id='button' className="p-text" target='_blank' href="https://drive.google.com/file/d/1BN4nghukGAYXgRhDk-E5CslnF-U_Hdo8/view?usp=drive_link">My Résumé</NextLink>
 
             </div>
         </motion.div>
@@ -96,13 +95,6 @@ const Header: React.FC = () => (
             className="app__header-img"
         >
             <Image src={images.olaImg} alt="profile_bg" />
-            {/* <motion.img
-                whileInView={{ scale: [0, 1] }}
-                transition={{ duration: 1, ease: 'easeInOut' }}
-                src={images.circle}
-                alt="profile_circle"
-                className="overlay_circle"
-            /> */}
         </motion.div>
 
         <motion.div

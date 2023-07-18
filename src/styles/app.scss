@@ -1,6 +1,6 @@
 .app {
     background-color: var(--primary-color);
-    font-family: var(--font-base);
+    font-family: 'Oswald', sans-serif;
 }
 
 .app__whitebg {
@@ -42,6 +42,7 @@
     text-align: center;
     // color: var(--black-color);
     text-transform: capitalize;
+    font-family: 'Oswald', sans-serif;
 
     span {
         color: var(--secondary-color);
@@ -62,6 +63,7 @@
     color: inherit;
     line-height: 1.5;
     font-weight: 500;
+    font-family: 'Oswald', sans-serif;
 
     @media screen and (min-width: 2000px) {
         font-size: 1.75rem;
@@ -73,6 +75,7 @@
     font-weight: 800;
     color: inherit;
     text-align: left;
+    font-family: 'Oswald', sans-serif;
 
     @media screen and (min-width: 2000px) {
         font-size: 2rem;
