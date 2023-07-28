@@ -12,7 +12,7 @@ const footerItems = [
     icon: <HiMiniDocumentText/>,
   },
   {
-    text: 'Projects',
+    text: 'Portfolio',
     link: '#projects',
     icon: <BsFillBriefcaseFill />,
   },

@@ -78,7 +78,7 @@ const NavBar = () => {
       icon: <BsFillPersonFill />,
     },
     {
-      text: 'Projects',
+      text: 'Portfolio',
       link: '/projects',
       icon: <BsFillBriefcaseFill />,
     },
