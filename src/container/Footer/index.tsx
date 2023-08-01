@@ -8,7 +8,7 @@ import { HiMiniDocumentText } from 'react-icons/hi2';
 const footerItems = [
   {
     text: 'My Résumé',
-    link: "https://drive.google.com/file/d/1BN4nghukGAYXgRhDk-E5CslnF-U_Hdo8/view?usp=drive_link",
+    link: "https://drive.google.com/file/d/1ARSl7xGua-F3s6GBLZGYvwy36frIy1OG/view?usp=sharing",
     icon: <HiMiniDocumentText/>,
   },
   {
