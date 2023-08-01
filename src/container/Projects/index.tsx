@@ -145,5 +145,5 @@ const Projects: React.FC = () => {
 
 export default AppWrap(
     MotionWrap(Projects, { classNames: 'app__works' }),
-    { idName: 'projects', classNames: '' }
+    { idName: 'portfolio', classNames: '' }
 );

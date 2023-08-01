@@ -13,7 +13,7 @@ const footerItems = [
   },
   {
     text: 'Portfolio',
-    link: '#projects',
+    link: '#portfolio',
     icon: <BsFillBriefcaseFill />,
   },
   // {
@@ -40,7 +40,7 @@ const Footer = () => {
             {
               footerItems?.map((item,index) => (
                 <li key={index}>
-                  <NextLink href={item.link} target={item.link === "#projects" ? "_self" : "_blank"}>{item.icon} &nbsp; {item.text}</NextLink>
+                  <NextLink href={item.link} target={item.link === "#portfolio" ? "_self" : "_blank"}>{item.icon} &nbsp; {item.text}</NextLink>
                 </li>
               ))
             }
