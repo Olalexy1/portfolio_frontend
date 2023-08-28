@@ -1,8 +1,20 @@
 import React, { useState, ChangeEvent } from 'react';
-import { images } from '@/util';
+import { images, validateEmail } from '@/util';
 import { AppWrap, MotionWrap } from '@/components/Wrapper';
 import { client } from '../../client';
 import Image from 'next/image';
+import Snackbar from '@mui/material/Snackbar';
+import MuiAlert, { AlertProps } from '@mui/material/Alert';
+import Button from '@mui/material/Button';
+import IconButton from '@mui/material/IconButton';
+import CloseIcon from '@mui/icons-material/Close';
+
+const Alert = React.forwardRef<HTMLDivElement, AlertProps>(function Alert(
+    props,
+    ref,
+) {
+    return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+});
 
 interface FormData {
     name: string;
@@ -19,30 +31,20 @@ const Contact: React.FC = () => {
         emailInput: false,
         messageInput: false
     });
+    const [open, setOpen] = React.useState(false);
 
     const { name, email, message } = formData;
+
+    const [errors, setErrors] = useState({
+        name: '',
+        email: '',
+        message: ''
+    });
 
     const handleChangeInput = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         const { name, value } = e.target;
         setFormData({ ...formData, [name]: value });
-    };
-
-    const handleSubmit = () => {
-        setLoading(true);
-
-        const contact = {
-            _type: 'contact',
-            name: formData.name,
-            email: formData.email,
-            message: formData.message,
-        };
-
-        client.create(contact)
-            .then(() => {
-                setLoading(false);
-                setIsFormSubmitted(true);
-            })
-            .catch((err) => console.log(err));
+        setErrors(prevErrors => ({ ...prevErrors, [name]: '' }));
     };
 
     const handleFocus = (inputName: any) => {
@@ -58,6 +60,79 @@ const Contact: React.FC = () => {
             [inputName]: false
         }));
     };
+
+    const validateInputs = () => {
+        let validationPassed = true;
+        const newErrors = { name: '', email: '', message: '' };
+
+        if (!name.trim()) {
+            newErrors.name = 'Name is required';
+            validationPassed = false;
+        }
+
+        if (!email.trim()) {
+            newErrors.email = 'Email is required';
+            validationPassed = false;
+        } else if (!validateEmail(email)) {
+            newErrors.email = 'Invalid email format';
+            setOpen(true);
+            validationPassed = false;
+        }
+
+        if (!message.trim()) {
+            newErrors.message = 'Message is required';
+            validationPassed = false;
+        }
+
+        setErrors(newErrors);
+        return validationPassed;
+    };
+
+    const handleSubmit = () => {
+
+        if (validateInputs()) {
+            setLoading(true);
+
+            const contact = {
+                _type: 'contact',
+                name: formData.name,
+                email: formData.email,
+                message: formData.message,
+            };
+
+            client.create(contact)
+                .then(() => {
+                    setLoading(false);
+                    setIsFormSubmitted(true);
+                })
+                .catch((err) => console.log(err));
+        }
+    };
+
+    const handleClose = (event: React.SyntheticEvent | Event, reason?: string) => {
+        if (reason === 'clickaway') {
+            return;
+        }
+
+        setOpen(false);
+    };
+
+
+    const action = (
+        <React.Fragment>
+            <Button color="secondary" size="small" onClick={handleClose}>
+                UNDO
+            </Button>
+            <IconButton
+                size="small"
+                aria-label="close"
+                color="inherit"
+                onClick={handleClose}
+            >
+                <CloseIcon fontSize="small" />
+            </IconButton>
+        </React.Fragment>
+    );
 
     return (
         <>
@@ -94,7 +169,10 @@ const Contact: React.FC = () => {
                             value={name}
                             onChange={handleChangeInput}
                             onFocus={handleFocus}
-                            onBlur={handleBlur} />
+                            onBlur={handleBlur}
+                            required
+                            style={errors.name ? { border: "2px solid red" } : {}}
+                        />
                     </div>
                     <div className="app__flex">
                         <input
@@ -105,7 +183,10 @@ const Contact: React.FC = () => {
                             value={email}
                             onChange={handleChangeInput}
                             onFocus={handleFocus}
-                            onBlur={handleBlur} />
+                            onBlur={handleBlur}
+                            required
+                            style={errors.email ? { border: "2px solid red" } : {}}
+                        />
                     </div>
                     <div>
                         <textarea
@@ -116,6 +197,9 @@ const Contact: React.FC = () => {
                             onChange={handleChangeInput}
                             onFocus={handleFocus}
                             onBlur={handleBlur}
+                            required
+                            style={errors.message ? { border: "2px solid red" } : {}}
+                            spellCheck="true"
                         />
                     </div>
                     <button id='button' type="button" className="p-text" onClick={handleSubmit}>{!loading ? 'Send Message' : 'Sending...'}</button>
@@ -127,6 +211,12 @@ const Contact: React.FC = () => {
                     </h3>
                 </div>
             )}
+
+            <Snackbar open={open} autoHideDuration={10000} onClose={handleClose} action={action}>
+                <Alert onClose={handleClose} severity="error" sx={{ width: '100%' }}>
+                    {errors.email}
+                </Alert>
+            </Snackbar>
         </>
     );
 };
