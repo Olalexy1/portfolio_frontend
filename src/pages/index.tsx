@@ -2,6 +2,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 import Layout from './layout';
 import { Header, About, Projects, Skills, Contact, Footer } from '@/container';
+import NavBar from '@/components/NavBar';
 
 export default function Home() {
   return (
@@ -13,6 +14,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Layout>
+        <NavBar/>
         <Header />
         <About />
         <Projects/>

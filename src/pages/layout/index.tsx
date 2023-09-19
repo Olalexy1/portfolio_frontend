@@ -1,5 +1,6 @@
 import NavBar from '@/components/NavBar';
 import { Box } from '@mui/system';
+import { Footer } from '@/container';
 
 const Layout = ({ children }: any) => {
     return (
@@ -9,7 +10,7 @@ const Layout = ({ children }: any) => {
                 padding: '0px',
             }}
         >
-            <NavBar />
+            {/* <NavBar /> */}
             {children}
         </Box>
     )
