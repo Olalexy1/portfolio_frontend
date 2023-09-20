@@ -18,6 +18,9 @@ import olaDevLogoDark from '../assets/olaDevLogoAlt.png';
 import olaDevLogoLight from '../assets/olaDevLogo.png';
 import preloader from '../assets/animatedPreloaderWhiteBg.gif';
 
+import mobileFrame from '../assets/mobile.png';
+import laptopFrame from '../assets/laptop.png';
+
 export default {
   email,
   phone,
@@ -36,5 +39,7 @@ export default {
   olaImg,
   olaDevLogoLight,
   olaDevLogoDark,
-  preloader
+  preloader,
+  mobileFrame,
+  laptopFrame
 };

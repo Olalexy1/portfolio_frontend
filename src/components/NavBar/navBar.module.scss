@@ -9,6 +9,10 @@
     backdrop-filter: blur(4px);
     -webkit-backdrop-filter: blur(4px);
     z-index: 10;
+    padding: 15px;
+    align-items: center;
+    width: 100%;
+    position: fixed;
 
     .navItems {
         display: flex;
@@ -35,12 +39,12 @@
         font-weight: 600;
         cursor: pointer;
         transition: all 0.3s ease-in-out;
-    
+
         &:hover {
             color: #3CD6EB; //will change
             text-decoration: none;
         }
-    
+
     }
 
 }
@@ -88,12 +92,12 @@
         font-weight: 600;
         cursor: pointer;
         transition: all 0.3s ease-in-out;
-    
+
         &:hover {
             color: #3CD6EB;
             text-decoration: none;
         }
-    
+
     }
 
 }

@@ -1,11 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { AiFillEye, AiFillGithub } from 'react-icons/ai';
+import { AiOutlineLink, AiFillGithub, AiFillInfoCircle, AiFillAndroid, AiFillApple } from 'react-icons/ai';
+import { HiX } from 'react-icons/hi';
+import { BiLogoFigma } from 'react-icons/bi';
 import { motion, TargetAndTransition } from 'framer-motion';
 import { AppWrap, MotionWrap } from '@/components/Wrapper';
 import { urlFor, client } from '../../client';
 import Image, { StaticImageData } from "next/image";
-import Stack from '@mui/material/Stack';
-import NextLink from 'next/link';
+import Tooltip from '@mui/material/Tooltip';
+import { images } from '@/util';
+import { useRouter } from 'next/router';
+import Link from 'next/link';
 
 interface ProjectData {
     _type: string;
@@ -15,6 +19,9 @@ interface ProjectData {
     codeLink: string;
     title: string;
     description: string;
+    figmaLink: string;
+    androidLink: string;
+    iphoneLink: string;
     tags: string[];
 }
 
@@ -28,6 +35,10 @@ const Projects: React.FC = () => {
     const [filterProject, setFilterProject] = useState<ProjectData[]>([]);
     const [activeFilter, setActiveFilter] = useState('All');
     const [animateCard, setAnimateCard] = useState<AnimateCardState>({ y: 0, opacity: 1 });
+    const router = useRouter();
+    const [toggle, setToggle] = useState(false);
+    const [selectedProject, setSelectedProject] = useState<ProjectData | null>(null);
+
 
     useEffect(() => {
         const query = '*[_type == "projects"]';
@@ -87,21 +98,22 @@ const Projects: React.FC = () => {
                                 alt={project.title} />
 
                             <motion.div
-                                whileHover={{ opacity: [0, 1] }}
+                                whileInView={{ opacity: [0, 0.8] }}
+                                // whileHover={{ opacity: [0, 1] }}
                                 transition={{ duration: 0.25, ease: 'easeInOut', staggerChildren: 0.5 }}
                                 className="app__work-hover app__flex"
                             >
-                                <a href={project?.projectLink === 'https://lexy-portfolio-frontend.vercel.app/' ? '#home' : project?.projectLink} target={project?.projectLink === 'https://lexy-portfolio-frontend.vercel.app/' ? "_self" : "_blank"} rel="noreferrer">
+                                <Link href={project?.projectLink === 'https://lexy-portfolio-frontend.vercel.app/' ? '#home' : project?.projectLink} target={project?.projectLink === 'https://lexy-portfolio-frontend.vercel.app/' ? "_self" : "_blank"} rel="noreferrer">
                                     <motion.div
                                         whileInView={{ scale: [0, 1] }}
                                         whileHover={{ scale: [1, 0.9] }}
                                         transition={{ duration: 0.25 }}
                                         className="app__flex"
                                     >
-                                        <AiFillEye />
+                                        <AiOutlineLink />
                                     </motion.div>
-                                </a>
-                                <a href={project?.codeLink} target="_blank" rel="noreferrer">
+                                </Link>
+                                <Link href={project?.codeLink} target="_blank" rel="noreferrer">
                                     <motion.div
                                         whileInView={{ scale: [0, 1] }}
                                         whileHover={{ scale: [1, 0.9] }}
@@ -110,7 +122,23 @@ const Projects: React.FC = () => {
                                     >
                                         <AiFillGithub />
                                     </motion.div>
-                                </a>
+                                </Link>
+
+                                <span>
+                                    <motion.div
+                                        whileInView={{ scale: [0, 1] }}
+                                        whileHover={{ scale: [1, 0.9] }}
+                                        transition={{ duration: 0.25 }}
+                                        className="app__flex"
+                                        onClick={() => {
+                                            setSelectedProject(project);
+                                            setToggle(true)
+                                        }}
+                                    >
+                                        <AiFillInfoCircle />
+                                    </motion.div>
+                                </span>
+
                             </motion.div>
                         </div>
 
@@ -139,6 +167,153 @@ const Projects: React.FC = () => {
                     </div>
                 ))}
             </motion.div>
+
+            {toggle && selectedProject && (
+                <motion.div
+                    whileInView={{ x: [300, 0] }}
+                    transition={{ duration: 0.85, ease: 'easeOut' }}
+                    className='app__project'
+                // exit={{ opacity: 0 }}
+                >
+                    <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', marginBottom: '15px' }}>
+                        <h2 className="head-text">
+                            {selectedProject.title} <span>Project</span>
+                        </h2>
+                        <HiX onClick={() => setToggle(false)} size='30' className='close_btn' />
+                    </div>
+
+                    <div className='app__project-content'>
+                        <div
+                            className="app__project-item"
+                        >
+
+                            <div className="gallery">
+                                <div className="card">
+                                    {selectedProject.tags.includes('Mobile App') &&
+                                        <div style={{ display: 'flex', justifyContent: 'center' }}>
+                                            <Image src={images.mobileFrame} alt="Mobile Frame" height={0} width={0} className='mobile-frame' />
+                                            <img src={urlFor(selectedProject?.imgUrl).url()} alt="Mobile Screenshot" className="mobile-screenshot" />
+                                        </div>
+                                    }
+                                    {selectedProject.tags.includes('Web App') &&
+                                        <div>
+                                            <Image src={images.laptopFrame} alt="Laptop Frame" height={200} width={400} className='laptop-frame' />
+                                            <img src={urlFor(selectedProject?.imgUrl).url()} alt="Website Screenshot" className="web-screenshot" />
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+
+                        </div>
+                        <div
+                            className="app__project-item"
+                        >
+                            <div className="project-desc">
+                                <h4 className="bold-text">Project Description</h4>
+                                <p className="p-text">
+                                    {selectedProject.description}
+                                </p>
+
+                            </div>
+
+                            <div className="project-desc">
+                                <h4 className="bold-text">Project Tags</h4>
+                                <div className='project-tag-content'>
+                                    {selectedProject.tags.map((item, index) => (
+                                        <span className="p-text" key={index}>{item}&nbsp;</span>
+                                    ))}
+                                </div>
+                            </div>
+
+                            <div className="project-desc">
+                                <h4 className="bold-text">Links and References</h4>
+                                <ul className='project-links'>
+                                    <li>
+                                        <Link href={selectedProject?.projectLink} target={"_blank"} rel="noreferrer">
+                                            <motion.div
+                                                whileInView={{ scale: [0, 1] }}
+                                                whileHover={{ scale: [1, 0.9] }}
+                                                transition={{ duration: 0.25 }}
+                                                className="app__flex"
+                                            >
+                                                <AiOutlineLink size='30' />
+                                            </motion.div>
+                                        </Link>
+                                    </li>
+                                    <li>
+                                        <Link href={selectedProject?.codeLink} target={"_blank"} rel="noreferrer">
+                                            <motion.div
+                                                whileInView={{ scale: [0, 1] }}
+                                                whileHover={{ scale: [1, 0.9] }}
+                                                transition={{ duration: 0.25 }}
+                                                className="app__flex"
+                                            >
+                                                <AiFillGithub size='30' />
+                                            </motion.div>
+                                        </Link>
+                                    </li>
+
+                                    {
+                                        selectedProject.figmaLink && (
+                                            <li>
+                                                <Link href={selectedProject?.figmaLink} target={"_blank"} rel="noreferrer">
+                                                    <motion.div
+                                                        whileInView={{ scale: [0, 1] }}
+                                                        whileHover={{ scale: [1, 0.9] }}
+                                                        transition={{ duration: 0.25 }}
+                                                        className="app__flex"
+                                                    >
+                                                        <BiLogoFigma size='28'/>
+                                                    </motion.div>
+                                                </Link>
+                                            </li>
+                                        )
+                                    }
+
+                                    {selectedProject.tags.includes('Mobile App') &&
+
+                                        <>
+                                            <li>
+                                                <Link href={selectedProject?.androidLink} target={"_blank"} rel="noreferrer">
+                                                    <motion.div
+                                                        whileInView={{ scale: [0, 1] }}
+                                                        whileHover={{ scale: [1, 0.9] }}
+                                                        transition={{ duration: 0.25 }}
+                                                        className="app__flex"
+                                                    >
+                                                        <AiFillAndroid size='30' />
+                                                    </motion.div>
+                                                </Link>
+                                            </li>
+
+                                            <li>
+                                                <Link href={selectedProject?.iphoneLink} target={"_blank"} rel="noreferrer">
+                                                    <motion.div
+                                                        whileInView={{ scale: [0, 1] }}
+                                                        whileHover={{ scale: [1, 0.9] }}
+                                                        transition={{ duration: 0.25 }}
+                                                        className="app__flex"
+                                                    >
+                                                        <AiFillApple size='30' />
+                                                    </motion.div>
+                                                </Link>
+                                            </li>
+                                            <li className='project-info-tip'>
+                                                Download Expo Go from the App Store to bundle the mobile app on your device.
+                                            </li>
+                                        </>
+                                    }
+                                    
+                                </ul>
+                            </div>
+
+                        </div>
+                    </div>
+
+
+                </motion.div>
+            )}
+
         </>
     );
 };

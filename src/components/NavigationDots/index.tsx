@@ -3,7 +3,7 @@ import NextLink from 'next/link';
 
 const NavigationDots = ({ active }: any) => (
   <div className="app__navigation">
-    {['home', 'about', 'projects', 'skills', 'contact'].map((item, index) => (
+    {['home', 'about', 'portfolio', 'skills', 'contact'].map((item, index) => (
       <NextLink
         href={`#${item}`}
         key={item + index}

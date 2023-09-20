@@ -22,17 +22,22 @@ import { Icon } from '@mui/material';
 import MaterialUISwitch from '../Switch';
 import { images } from '@/util';
 import Image from "next/image";
+import { useRouter } from 'next/router';
 
 const styles = {
   appBar: {
     boxShadow: 'none',
+    // backgroundColor:'transparent',
+    // color: 'white'
   },
 
   appBarAlt: {
     margin: '0px',
     width: '100%',
     height: '70px',
-    justifyContent: 'center'
+    justifyContent: 'space-between',
+    // backgroundColor: 'transparent',
+    // color: 'white'
   }
 };
 
@@ -40,6 +45,7 @@ const NavBar = () => {
   const [isDrawerOpen, setDrawerOpen] = useState(false);
   const navTheme = useTheme();
   const isMobile = useMediaQuery(navTheme.breakpoints.down('md'));
+  const router = useRouter();
 
   const [theme, setTheme] = useState(
     typeof window !== 'undefined' ? localStorage.getItem('theme') || 'light' : ''
@@ -121,19 +127,17 @@ const NavBar = () => {
 
   return (
     <>
-      <AppBar position="fixed" color='transparent' style={!isMobile ? styles.appBar : styles.appBarAlt}>
-        <Toolbar className={myStyles.navBar}>
-          <Stack direction="row" spacing={'10px'} className={myStyles.logo}>
+      {/* <Box position={'fixed'} color='transparent' style={!isMobile ? styles.appBar : styles.appBarAlt}> */}
+        <div className={myStyles.navBar} style={!isMobile ? styles.appBar : styles.appBarAlt}>
             <NextLink href={"/"} className={myStyles.links}>
               <Image src={theme === 'light' ? images.olaDevLogoLight : images.olaDevLogoDark} alt="logo"></Image>
             </NextLink>
-          </Stack>
           <Box>
             {!isMobile && renderDesktopMenuItems()}
             {isMobile && renderMobileMenuItems()}
           </Box>
-        </Toolbar>
-      </AppBar>
+        </div>
+      {/* </Box> */}
 
       <Drawer className={myStyles.customDrawer} anchor="left" open={isMobile ? isDrawerOpen : false} onClose={toggleDrawer}>
         <div className={myStyles.mobileNavbar} style={theme === 'dark' ? { backgroundColor: '#333', color: '#fff' } : { backgroundColor: '#fff', color: '#000' }}>

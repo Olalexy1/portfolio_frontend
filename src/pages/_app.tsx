@@ -6,6 +6,7 @@ import '@/styles/projects.scss';
 import '@/styles/skills.scss';
 import '@/styles/contact.scss';
 import '@/styles/footer.scss';
+import '@/styles/project.scss';
 import type { AppProps } from 'next/app';
 import { useEffect, useState } from 'react';
 import { Box } from '@mui/system';
@@ -25,7 +26,7 @@ export default function App({ Component, pageProps }: AppProps) {
 
     setTimeout(() => {
       setAppLoaded(true);
-    }, 6000);
+    }, 3000);
   }, []);
 
 
