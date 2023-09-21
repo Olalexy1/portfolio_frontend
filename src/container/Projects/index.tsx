@@ -14,6 +14,7 @@ import Link from 'next/link';
 interface ProjectData {
     _type: string;
     imgUrl: string;
+    imgUrlTwo: string;
     name: string;
     projectLink: string;
     codeLink: string;
@@ -35,7 +36,6 @@ const Projects: React.FC = () => {
     const [filterProject, setFilterProject] = useState<ProjectData[]>([]);
     const [activeFilter, setActiveFilter] = useState('All');
     const [animateCard, setAnimateCard] = useState<AnimateCardState>({ y: 0, opacity: 1 });
-    const router = useRouter();
     const [toggle, setToggle] = useState(false);
     const [selectedProject, setSelectedProject] = useState<ProjectData | null>(null);
 
@@ -94,7 +94,7 @@ const Projects: React.FC = () => {
                             <Image
                                 width={230}
                                 height={230}
-                                src={urlFor(project.imgUrl).url()}
+                                src={urlFor(project.imgUrlTwo).url()}
                                 alt={project.title} />
 
                             <motion.div
@@ -103,6 +103,22 @@ const Projects: React.FC = () => {
                                 transition={{ duration: 0.25, ease: 'easeInOut', staggerChildren: 0.5 }}
                                 className="app__work-hover app__flex"
                             >
+
+                                {
+                                    project.projectLink && (
+                                        <Link href={project?.projectLink === 'https://lexy-portfolio-frontend.vercel.app/' ? '#home' : project?.projectLink} target={project?.projectLink === 'https://lexy-portfolio-frontend.vercel.app/' ? "_self" : "_blank"} rel="noreferrer">
+                                            <motion.div
+                                                whileInView={{ scale: [0, 1] }}
+                                                whileHover={{ scale: [1, 0.9] }}
+                                                transition={{ duration: 0.25 }}
+                                                className="app__flex"
+                                            >
+                                                <AiOutlineLink />
+                                            </motion.div>
+                                        </Link>
+                                    )
+                                }
+                                {/* 
                                 <Link href={project?.projectLink === 'https://lexy-portfolio-frontend.vercel.app/' ? '#home' : project?.projectLink} target={project?.projectLink === 'https://lexy-portfolio-frontend.vercel.app/' ? "_self" : "_blank"} rel="noreferrer">
                                     <motion.div
                                         whileInView={{ scale: [0, 1] }}
@@ -112,7 +128,7 @@ const Projects: React.FC = () => {
                                     >
                                         <AiOutlineLink />
                                     </motion.div>
-                                </Link>
+                                </Link> */}
                                 <Link href={project?.codeLink} target="_blank" rel="noreferrer">
                                     <motion.div
                                         whileInView={{ scale: [0, 1] }}
@@ -175,10 +191,11 @@ const Projects: React.FC = () => {
                     className='app__project'
                 // exit={{ opacity: 0 }}
                 >
-                    <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', marginBottom: '15px' }}>
-                        <h2 className="head-text">
+                    <div className='app__project-header'>
+                        <h2 className="project-head-text">
                             {selectedProject.title} <span>Project</span>
                         </h2>
+
                         <HiX onClick={() => setToggle(false)} size='30' className='close_btn' />
                     </div>
 
@@ -191,14 +208,13 @@ const Projects: React.FC = () => {
                                 <div className="card">
                                     {selectedProject.tags.includes('Mobile App') &&
                                         <div style={{ display: 'flex', justifyContent: 'center' }}>
-                                            <Image src={images.mobileFrame} alt="Mobile Frame" height={0} width={0} className='mobile-frame' />
-                                            <img src={urlFor(selectedProject?.imgUrl).url()} alt="Mobile Screenshot" className="mobile-screenshot" />
+                                            <Image src={urlFor(selectedProject?.imgUrl).url()} alt="Mobile App Screenshot" height={200} width={300} className='mobile-frame' loading='lazy' />
                                         </div>
                                     }
                                     {selectedProject.tags.includes('Web App') &&
                                         <div>
-                                            <Image src={images.laptopFrame} alt="Laptop Frame" height={200} width={400} className='laptop-frame' />
-                                            <img src={urlFor(selectedProject?.imgUrl).url()} alt="Website Screenshot" className="web-screenshot" />
+                                            <Image src={urlFor(selectedProject?.imgUrl).url()} alt="Website Screenshot" height={400} width={500} className='laptop-frame'
+                                                loading='lazy' />
                                         </div>
                                     }
                                 </div>
@@ -228,18 +244,23 @@ const Projects: React.FC = () => {
                             <div className="project-desc">
                                 <h4 className="bold-text">Links and References</h4>
                                 <ul className='project-links'>
-                                    <li>
-                                        <Link href={selectedProject?.projectLink} target={"_blank"} rel="noreferrer">
-                                            <motion.div
-                                                whileInView={{ scale: [0, 1] }}
-                                                whileHover={{ scale: [1, 0.9] }}
-                                                transition={{ duration: 0.25 }}
-                                                className="app__flex"
-                                            >
-                                                <AiOutlineLink size='30' />
-                                            </motion.div>
-                                        </Link>
-                                    </li>
+                                    {
+                                        selectedProject?.projectLink && (
+                                            <li>
+                                                <Link href={selectedProject?.projectLink} target={"_blank"} rel="noreferrer">
+                                                    <motion.div
+                                                        whileInView={{ scale: [0, 1] }}
+                                                        whileHover={{ scale: [1, 0.9] }}
+                                                        transition={{ duration: 0.25 }}
+                                                        className="app__flex"
+                                                    >
+                                                        <AiOutlineLink size='30' />
+                                                    </motion.div>
+                                                </Link>
+                                            </li>
+
+                                        )
+                                    }
                                     <li>
                                         <Link href={selectedProject?.codeLink} target={"_blank"} rel="noreferrer">
                                             <motion.div
@@ -263,7 +284,7 @@ const Projects: React.FC = () => {
                                                         transition={{ duration: 0.25 }}
                                                         className="app__flex"
                                                     >
-                                                        <BiLogoFigma size='28'/>
+                                                        <BiLogoFigma size='28' />
                                                     </motion.div>
                                                 </Link>
                                             </li>
@@ -303,7 +324,7 @@ const Projects: React.FC = () => {
                                             </li>
                                         </>
                                     }
-                                    
+
                                 </ul>
                             </div>
 
