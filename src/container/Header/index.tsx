@@ -84,7 +84,7 @@ const Header: React.FC = () => (
                     </p>
                 </div>
 
-                <NextLink id='button' className="p-text" target='_blank' href="https://drive.google.com/file/d/1ARSl7xGua-F3s6GBLZGYvwy36frIy1OG/view?usp=sharing">My Résumé</NextLink>
+                <NextLink id='button' className="p-text" target='_blank' href="https://drive.google.com/file/d/15p8iowrdiBLfDX2vPAXsLEV0x7AcaAUj/view?usp=drive_link">My Résumé</NextLink>
 
             </div>
         </motion.div>
