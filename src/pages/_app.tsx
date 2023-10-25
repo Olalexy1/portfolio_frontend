@@ -1,3 +1,4 @@
+import React, { useState } from 'react';
 import '@/styles/globals.scss';
 import '@/styles/app.scss';
 import '@/styles/header.scss';
@@ -8,34 +9,36 @@ import '@/styles/contact.scss';
 import '@/styles/footer.scss';
 import '@/styles/project.scss';
 import type { AppProps } from 'next/app';
-import { useEffect, useState } from 'react';
-import { Box } from '@mui/system';
 import LoadingScreen from '@/components/Loader';
 import { QueryClient, QueryClientProvider } from 'react-query';
+import { useRouter } from 'next/router'
 
 const queryClient = new QueryClient();
 
 export default function App({ Component, pageProps }: AppProps) {
-  const [theme, setTheme] = useState(
-    typeof window !== 'undefined' ? localStorage.getItem('theme') || 'light' : ''
-  );
+  const router = useRouter()
+  const [loading, setLoading] = React.useState(false)
 
-  const [appLoaded, setAppLoaded] = useState(false);
+  React.useEffect(() => {
+    const handleRouteChange = (url: string) => {
+      setLoading(true)
+    }
 
-  useEffect(() => {
+    const handleRouteChangeComplete = () => {
+      setLoading(false)
+    }
 
-    setTimeout(() => {
-      setAppLoaded(true);
-    }, 3000);
-  }, []);
+    router.events.on('routeChangeStart', handleRouteChange)
+    router.events.on('routeChangeComplete', handleRouteChangeComplete)
 
+    return () => {
+      router.events.off('routeChangeStart', handleRouteChange)
+      router.events.off('routeChangeComplete', handleRouteChangeComplete)
+    }
+  }, [router.events])
 
-  return (
+  return <> {loading ? <LoadingScreen /> :
     <QueryClientProvider client={queryClient}>
-      <Box className={`App ${theme}`}>
-        {appLoaded ? <Component {...pageProps} /> : <LoadingScreen />}
-      </Box>
-    </QueryClientProvider>
-
-  );
+      <Component {...pageProps} />
+    </QueryClientProvider>} </>
 }

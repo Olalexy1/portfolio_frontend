@@ -6,10 +6,8 @@ import { motion, TargetAndTransition } from 'framer-motion';
 import { AppWrap, MotionWrap } from '@/components/Wrapper';
 import { urlFor, client } from '../../client';
 import Image, { StaticImageData } from "next/image";
-import Tooltip from '@mui/material/Tooltip';
-import { images } from '@/util';
-import { useRouter } from 'next/router';
 import Link from 'next/link';
+import ReactPlayer from 'react-player/youtube'
 
 interface ProjectData {
     _type: string;
@@ -20,6 +18,8 @@ interface ProjectData {
     codeLink: string;
     title: string;
     description: string;
+    videoLink: string;
+    downloadLink: string;
     figmaLink: string;
     androidLink: string;
     iphoneLink: string;
@@ -48,6 +48,12 @@ const Projects: React.FC = () => {
             setFilterProject(data);
         });
     }, []);
+
+    // 'videoURL': projects.video.asset._ref
+
+    // const asset = selectedProject?.video.asset._ref
+
+    // const videoUrl = new URL(`${asset}?dl=`, baseUrl);
 
     const handleWorkFilter = (item: string) => {
         setActiveFilter(item);
@@ -94,7 +100,7 @@ const Projects: React.FC = () => {
                             <Image
                                 width={230}
                                 height={230}
-                                src={urlFor(project.imgUrlTwo).url()}
+                                src={urlFor(project?.imgUrlTwo).url()}
                                 alt={project.title} />
 
                             <motion.div
@@ -226,10 +232,17 @@ const Projects: React.FC = () => {
                         >
                             <div className="project-desc">
                                 <h4 className="bold-text">Project Description</h4>
-                                <p className="p-text">
+                                <p className="p-text" style={{ marginBottom: '20px' }}>
                                     {selectedProject.description}
                                 </p>
 
+                                {selectedProject?.videoLink && (
+                                    <ReactPlayer
+                                        url={selectedProject.videoLink}
+                                        playing={true}
+                                        width={'100%'}
+                                    />
+                                )}
                             </div>
 
                             <div className="project-desc">

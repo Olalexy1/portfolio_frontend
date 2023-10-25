@@ -1,5 +1,4 @@
 import Head from 'next/head'
-import Image from 'next/image'
 import Layout from './layout';
 import { Header, About, Projects, Skills, Contact, Footer } from '@/container';
 import NavBar from '@/components/NavBar';
