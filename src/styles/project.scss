@@ -15,6 +15,10 @@
     flex-direction: column;
 
     background-color: #fff;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
 
     .app__project-header { 
         display: flex;
@@ -223,4 +227,8 @@
 
 .dark .app__project {
     background-color: #333;
+}
+
+.app__project::-webkit-scrollbar{
+    display: none;
 }
