@@ -18,15 +18,12 @@ import myStyles from './navBar.module.scss';
 import MaterialUISwitch from '../Switch';
 import { images } from '@/util';
 import Image from "next/image";
-import { useRouter } from 'next/router';
 import LightModeOutlinedIcon from "@mui/icons-material/LightModeOutlined";
 import DarkModeOutlinedIcon from "@mui/icons-material/DarkModeOutlined";
 
 const styles = {
   appBar: {
     boxShadow: 'none',
-    // backgroundColor:'transparent',
-    // color: 'white'
   },
 
   appBarAlt: {
@@ -34,8 +31,6 @@ const styles = {
     width: '100%',
     height: '70px',
     justifyContent: 'space-between',
-    // backgroundColor: 'transparent',
-    // color: 'white'
   }
 };
 
@@ -43,11 +38,6 @@ const NavBar = () => {
   const [isDrawerOpen, setDrawerOpen] = useState(false);
   const navTheme = useTheme();
   const isMobile = useMediaQuery(navTheme.breakpoints.down('md'));
-  const router = useRouter();
-
-  // const [theme, setTheme] = useState(
-  //   typeof window !== 'undefined' ? localStorage.getItem('theme') || 'light' : 'light'
-  // );
 
   const [theme, setTheme] = useState('light');
 
@@ -138,7 +128,6 @@ const NavBar = () => {
 
   return (
     <>
-      {/* <Box position={'fixed'} color='transparent' style={!isMobile ? styles.appBar : styles.appBarAlt}> */}
       <div className={myStyles.navBar} style={!isMobile ? styles.appBar : styles.appBarAlt}>
         <NextLink href={"/"} className={myStyles.links}>
           <Image src={theme === 'light' ? images.olaDevLogoLight : images.olaDevLogoDark} alt="logo"></Image>
@@ -148,7 +137,6 @@ const NavBar = () => {
           {isMobile && renderMobileMenuItems()}
         </Box>
       </div>
-      {/* </Box> */}
 
       <Drawer className={myStyles.customDrawer} anchor="left" open={isMobile ? isDrawerOpen : false} onClose={toggleDrawer}>
         <div className={myStyles.mobileNavbar} style={theme === 'dark' ? { backgroundColor: '#333', color: '#fff' } : { backgroundColor: '#fff', color: '#000' }}>
