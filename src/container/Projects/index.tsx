@@ -22,7 +22,7 @@ interface ProjectData {
     downloadLink: string;
     figmaLink: string;
     androidLink: string;
-    iphoneLink: string;
+    iphoneLink?: string;
     tags: string[];
 }
 
@@ -308,20 +308,23 @@ const Projects: React.FC = () => {
 
                                         <>
                                             <li>
-                                                <Link href={selectedProject?.androidLink} target={"_blank"} rel="noreferrer">
+                                                <Link href={selectedProject?.androidLink || '#'} target={"_blank"} rel="noreferrer">
                                                     <motion.div
                                                         whileInView={{ scale: [0, 1] }}
                                                         whileHover={{ scale: [1, 0.9] }}
                                                         transition={{ duration: 0.25 }}
                                                         className="app__flex"
                                                     >
-                                                        <AiFillAndroid size='30' />
+                                                        <AiFillAndroid size='30'/>
+                                                        <span className='project-info-tip'>
+                                                            Download APK File
+                                                        </span>
                                                     </motion.div>
                                                 </Link>
                                             </li>
 
-                                            <li>
-                                                <Link href={selectedProject?.iphoneLink} target={"_blank"} rel="noreferrer">
+                                            {/* <li>
+                                                <Link href={selectedProject?.iphoneLink || '#'} target={"_blank"} rel="noreferrer">
                                                     <motion.div
                                                         whileInView={{ scale: [0, 1] }}
                                                         whileHover={{ scale: [1, 0.9] }}
@@ -331,10 +334,7 @@ const Projects: React.FC = () => {
                                                         <AiFillApple size='30' />
                                                     </motion.div>
                                                 </Link>
-                                            </li>
-                                            <li className='project-info-tip'>
-                                                Download Expo Go from the App Store to bundle the mobile app on your device.
-                                            </li>
+                                            </li> */}
                                         </>
                                     }
 
