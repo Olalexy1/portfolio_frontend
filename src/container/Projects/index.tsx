@@ -146,6 +146,19 @@ const Projects: React.FC = () => {
                                     </motion.div>
                                 </Link>
 
+                                {project.tags.includes('Mobile App') && (
+                                    <Link href={project?.androidLink || '#'} target={"_blank"} rel="noreferrer">
+                                        <motion.div
+                                            whileInView={{ scale: [0, 1] }}
+                                            whileHover={{ scale: [1, 0.9] }}
+                                            transition={{ duration: 0.25 }}
+                                            className="app__flex"
+                                        >
+                                            <AiFillAndroid />
+                                        </motion.div>
+                                    </Link>
+                                )}
+
                                 <span>
                                     <motion.div
                                         whileInView={{ scale: [0, 1] }}
@@ -315,7 +328,7 @@ const Projects: React.FC = () => {
                                                         transition={{ duration: 0.25 }}
                                                         className="app__flex"
                                                     >
-                                                        <AiFillAndroid size='30'/>
+                                                        <AiFillAndroid size='30' />
                                                         <span className='project-info-tip'>
                                                             Download APK File
                                                         </span>
