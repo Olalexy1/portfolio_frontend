@@ -4,23 +4,37 @@ import NextLink from 'next/link';
 import { motion } from 'framer-motion';
 import { BsFillBriefcaseFill, BsWhatsapp } from 'react-icons/bs';
 import { HiMiniDocumentText } from 'react-icons/hi2';
+import { IoLogoWhatsapp } from "react-icons/io";
+import { FaGithub, FaLinkedin } from "react-icons/fa";
+
 
 const footerItems = [
   {
     text: 'My Résumé',
-    link: "https://drive.google.com/file/d/1ARSl7xGua-F3s6GBLZGYvwy36frIy1OG/view?usp=sharing",
-    icon: <HiMiniDocumentText/>,
+    link: "https://docs.google.com/document/d/1gDBrsL9zlU06kNvBP1nCT-Puvqle_YX4oVb3XB09zFo/edit?usp=sharing",
+    icon: <HiMiniDocumentText />,
   },
   {
     text: 'Portfolio',
     link: '#portfolio',
     icon: <BsFillBriefcaseFill />,
   },
-  // {
-  //   text: 'WhatsApp',
-  //   link: 'https://wa.me/2347053755127?text=Hi%2C%20I%20think%20we%20need%20a%20web%20application.%20How%20soon%20can%20we%20discuss%20this%3F',
-  //   icon: <BsWhatsapp/>,
-  // },
+  {
+    text: 'WhatsApp',
+    link: 'https://wa.me/2348188394639?text=Hi%2C%20I%20think%20we%20need%20a%20web%20application.%20How%20soon%20can%20we%20discuss%20this%3F',
+    icon: <IoLogoWhatsapp />,
+  },
+  {
+    text: 'LinkedIn',
+    link: 'https://www.linkedin.com/in/ajayiolalekan/',
+    icon: <FaLinkedin />,
+  },
+  {
+    text: 'GitHub',
+    link: 'https://github.com/Olalexy1',
+    icon: <FaGithub />
+    ,
+  },
 ];
 
 
@@ -38,7 +52,7 @@ const Footer = () => {
         <div className='app__footer-links'>
           <ul>
             {
-              footerItems?.map((item,index) => (
+              footerItems?.map((item, index) => (
                 <li key={index}>
                   <NextLink href={item.link} target={item.link === "#portfolio" ? "_self" : "_blank"}>{item.icon} &nbsp; {item.text}</NextLink>
                 </li>

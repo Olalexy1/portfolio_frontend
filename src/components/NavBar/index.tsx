@@ -66,6 +66,11 @@ const NavBar = () => {
     setDrawerOpen(!isDrawerOpen);
   };
 
+  const handleActiveLink = (index: any) => {
+    setActiveLink(index)
+    setDrawerOpen(!isDrawerOpen);
+  }
+
   const menuItems = [
     {
       text: 'Home',
@@ -151,7 +156,7 @@ const NavBar = () => {
           {menuItems.map((item, index) => (
             <NextLink
               key={index}
-              onClick={() => setActiveLink(index)}
+              onClick={() =>handleActiveLink(index)}
               className={`${myStyles.links} ${myStyles.links_mobile}`}
               style={index === activeLink ? { color: '#3CD6EB' } : {}}
               href={`#${item.text.toLowerCase()}`}>
