@@ -12,6 +12,7 @@ import react from '../assets/react.png';
 import redux from '../assets/redux.png';
 import sass from '../assets/sass.png';
 import typescript from '../assets/typescript.png';
+import tailwind from '../assets/tailwind.png';
 
 import olaImg from '../assets/olaImgMinNew.png';
 import olaDevLogoDark from '../assets/olaDevLogoAlt.png';
@@ -41,5 +42,6 @@ export default {
   olaDevLogoDark,
   preloader,
   mobileFrame,
-  laptopFrame
+  laptopFrame,
+  tailwind
 };
