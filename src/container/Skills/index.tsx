@@ -15,7 +15,7 @@ const Skills: React.FC = () => {
   const [skills, setSkills] = useState<SkillData[]>([]);
 
   useEffect(() => {
-    const query = '*[_type == "skills"]';
+    const query = '*[_type == "skills" && !(_id in path("drafts.**"))]';
 
     client.fetch<SkillData[]>(query).then((data) => {
       setSkills(data);
