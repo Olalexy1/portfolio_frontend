@@ -16,14 +16,15 @@
         flex-direction: column;
         justify-content: center;
 
-        h4 {
+        .name {
             font-size: 1.2rem;
             text-transform: uppercase;
             letter-spacing: 1px;
             font-family: 'Oswald', sans-serif;
+            font-weight: 600;
         }
 
-        p {
+        .desc {
             margin-top: .9rem;
             font-size: 1.1rem;
             line-height: 1.7;
@@ -88,14 +89,15 @@
             flex-direction: column;
             justify-content: center;
 
-            h4 {
+            .name {
                 font-size: 1.2rem;
                 text-transform: uppercase;
                 letter-spacing: 1px;
                 font-family: 'Oswald', sans-serif;
+                font-weight: 600;
             }
 
-            p {
+            .desc {
                 margin-top: .9rem;
                 font-size: 1.1rem;
                 line-height: 1.7;

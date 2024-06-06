@@ -108,6 +108,7 @@ const NavBar = () => {
         {menuItems.map((item, index) => (
           <NextLink
             onClick={() => setActiveLink(index)}
+            aria-label={`Aria-${item}`}
             className={myStyles.links}
             style={index === activeLink ? { color: '#3CD6EB' } : {}}
             key={`link-${item}`}
@@ -127,7 +128,7 @@ const NavBar = () => {
 
   const renderMobileMenuItems = () => {
     return (
-      <IconButton edge="start" color="inherit" onClick={toggleDrawer}>
+      <IconButton edge="start" color="inherit" onClick={toggleDrawer} aria-label='Mobile Navigation Menu' id='menu'>
         <MenuIcon />
       </IconButton>
     );
@@ -159,6 +160,7 @@ const NavBar = () => {
             <NextLink
               key={index}
               onClick={() => handleActiveLink(index)}
+              aria-label={`Aria-${item}`}
               className={`${myStyles.links} ${myStyles.links_mobile}`}
               style={index === activeLink ? { color: '#3CD6EB' } : {}}
               href={`#${item.text.toLowerCase()}`}>
@@ -168,7 +170,7 @@ const NavBar = () => {
             </NextLink>
           ))}
           <div className={myStyles.mobileSwitch}>
-            <IconButton onClick={toggleTheme}>
+            <IconButton onClick={toggleTheme} aria-label='Theme Toggle'>
               {contextTheme === "dark" ? (
                 <DarkModeOutlinedIcon htmlColor="white" />
               ) : (

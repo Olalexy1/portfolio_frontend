@@ -72,9 +72,9 @@ const Projects: React.FC = () => {
 
     return (
         <>
-            <h2 className="head-text">
+            <h1 className="head-text">
                 My Creative <span>Portfolio</span> Section
-            </h2>
+            </h1>
 
             <div className="app__work-filter">
                 {['All', 'Web App', 'Mobile App', 'React Js', 'React Native', 'Next Js', 'TypeScript'].map((item, index) => (
@@ -178,7 +178,7 @@ const Projects: React.FC = () => {
                         </div>
 
                         <div className="app__work-content app__flex">
-                            <h4 className="bold-text">{project.title}</h4>
+                            <h2 className="bold-text">{project.title}</h2>
                             <p className="p-text" style={{ marginTop: 10 }}>
                                 {project.description}
                             </p>
@@ -211,9 +211,9 @@ const Projects: React.FC = () => {
                 // exit={{ opacity: 0 }}
                 >
                     <div className='app__project-header'>
-                        <h2 className="project-head-text">
+                        <h1 className="project-head-text">
                             {selectedProject.title} <span>Project</span>
-                        </h2>
+                        </h1>
 
                         <HiX onClick={() => setToggle(false)} size='30' className='close_btn' />
                     </div>
@@ -244,7 +244,7 @@ const Projects: React.FC = () => {
                             className="app__project-item"
                         >
                             <div className="project-desc">
-                                <h4 className="bold-text">Project Description</h4>
+                                <h2 className="bold-text">Project Description</h2>
                                 <p className="p-text" style={{ marginBottom: '20px' }}>
                                     {selectedProject.description}
                                 </p>
@@ -259,7 +259,7 @@ const Projects: React.FC = () => {
                             </div>
 
                             <div className="project-desc">
-                                <h4 className="bold-text">Project Tags</h4>
+                                <h2 className="bold-text">Project Tags</h2>
                                 <div className='project-tag-content'>
                                     {selectedProject.tags.map((item, index) => (
                                         <span className="p-text" key={index}>{item}&nbsp;</span>
@@ -268,7 +268,7 @@ const Projects: React.FC = () => {
                             </div>
 
                             <div className="project-desc">
-                                <h4 className="bold-text">Links and References</h4>
+                                <h2 className="bold-text">Links and References</h2>
                                 <ul className='project-links'>
                                     {
                                         selectedProject?.projectLink && (

@@ -51,8 +51,8 @@ const Footer = () => {
       // style={{ backgroundColor: '#3CD6EB' }}
       >
         <div className='app__footer-desc'>
-          <h4>Ajayi Olalekan Bamidele</h4>
-          <p>A passionate Frontend React Developer based in Lagos, Nigeria. Building the Frontend of Web and Mobile Applications that leads to the success of the overall product.</p>
+          <p className='name'>Ajayi Olalekan Bamidele</p>
+          <p className='desc'>A passionate Frontend React Developer. Building the Frontend of Web and Mobile Applications that leads to the success of the overall product.</p>
         </div>
         <div className='app__footer-links'>
           <ul>
