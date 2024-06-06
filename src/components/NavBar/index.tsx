@@ -15,7 +15,7 @@ import { TiMessages } from 'react-icons/ti';
 import { GiSkills } from 'react-icons/gi';
 import NextLink from 'next/link';
 import myStyles from './navBar.module.scss';
-import MaterialUISwitch from '../Switch';
+import { useContextTheme } from '@/context';
 import { images } from '@/util';
 import Image from "next/image";
 import LightModeOutlinedIcon from "@mui/icons-material/LightModeOutlined";
@@ -39,27 +39,30 @@ const NavBar = () => {
   const navTheme = useTheme();
   const isMobile = useMediaQuery(navTheme.breakpoints.down('md'));
 
-  const [theme, setTheme] = useState('light');
+  // const [theme, setTheme] = useState('light');
+  const { contextTheme, setContextTheme } = useContextTheme();
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
       const storedTheme = localStorage.getItem('theme');
       if (storedTheme) {
-        setTheme(storedTheme);
+        // setTheme(storedTheme);
+        setContextTheme(storedTheme);
       }
     }
   }, []);
 
   const toggleTheme = () => {
-    setTheme((prev) => (prev === "light" ? "dark" : "light"))
+    // setTheme((prev) => (prev === "light" ? "dark" : "light"))
+    setContextTheme((prev) => (prev === "light" ? "dark" : "light"))
   };
 
   const [activeLink, setActiveLink] = useState(0);
 
   useEffect(() => {
-    localStorage.setItem('theme', theme);
-    document.body.className = theme;
-  }, [theme]);
+    localStorage.setItem('theme', contextTheme);
+    document.body.className = contextTheme;
+  }, [contextTheme]);
 
 
   const toggleDrawer = () => {
@@ -111,9 +114,8 @@ const NavBar = () => {
             href={`#${item.text.toLowerCase()}`}>{item.text}
           </NextLink>
         ))}
-        {/* <MaterialUISwitch onChange={toggleTheme} /> */}
         <IconButton onClick={toggleTheme}>
-          {theme === "dark" ? (
+          {contextTheme === "dark" ? (
             <DarkModeOutlinedIcon htmlColor="white" />
           ) : (
             <LightModeOutlinedIcon htmlColor="black" />
@@ -135,7 +137,7 @@ const NavBar = () => {
     <>
       <div className={myStyles.navBar} style={!isMobile ? styles.appBar : styles.appBarAlt}>
         <NextLink href={"/"} className={myStyles.links}>
-          <Image src={theme === 'light' ? images.olaDevLogoLight : images.olaDevLogoDark} alt="logo"></Image>
+          <Image src={contextTheme === 'light' ? images.olaDevLogoLight : images.olaDevLogoDark} alt="logo"></Image>
         </NextLink>
         <Box>
           {!isMobile && renderDesktopMenuItems()}
@@ -144,10 +146,10 @@ const NavBar = () => {
       </div>
 
       <Drawer className={myStyles.customDrawer} anchor="left" open={isMobile ? isDrawerOpen : false} onClose={toggleDrawer}>
-        <div className={myStyles.mobileNavbar} style={theme === 'dark' ? { backgroundColor: '#333', color: '#fff' } : { backgroundColor: '#fff', color: '#000' }}>
+        <div className={myStyles.mobileNavbar} style={contextTheme === 'dark' ? { backgroundColor: '#333', color: '#fff' } : { backgroundColor: '#fff', color: '#000' }}>
           <div className={myStyles.customLogoContainer}>
             <NextLink href={"/"} className={myStyles.links}>
-              <Image src={theme === 'light' ? images.olaDevLogoLight : images.olaDevLogoDark} alt="logo"></Image>
+              <Image src={contextTheme === 'light' ? images.olaDevLogoLight : images.olaDevLogoDark} alt="logo"></Image>
             </NextLink>
             <IconButton edge="start" color="inherit" onClick={toggleDrawer}>
               <CloseIcon />
@@ -156,7 +158,7 @@ const NavBar = () => {
           {menuItems.map((item, index) => (
             <NextLink
               key={index}
-              onClick={() =>handleActiveLink(index)}
+              onClick={() => handleActiveLink(index)}
               className={`${myStyles.links} ${myStyles.links_mobile}`}
               style={index === activeLink ? { color: '#3CD6EB' } : {}}
               href={`#${item.text.toLowerCase()}`}>
@@ -166,9 +168,8 @@ const NavBar = () => {
             </NextLink>
           ))}
           <div className={myStyles.mobileSwitch}>
-            {/* <MaterialUISwitch onChange={toggleTheme} /> */}
             <IconButton onClick={toggleTheme}>
-              {theme === "dark" ? (
+              {contextTheme === "dark" ? (
                 <DarkModeOutlinedIcon htmlColor="white" />
               ) : (
                 <LightModeOutlinedIcon htmlColor="black" />

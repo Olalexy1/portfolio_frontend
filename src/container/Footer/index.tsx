@@ -6,6 +6,8 @@ import { BsFillBriefcaseFill, BsWhatsapp } from 'react-icons/bs';
 import { HiMiniDocumentText } from 'react-icons/hi2';
 import { IoLogoWhatsapp } from "react-icons/io";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
+import { WebsiteCarbonBadge } from 'react-websitecarbon-badge';
+import { useContextTheme } from '@/context';
 
 
 const footerItems = [
@@ -40,11 +42,14 @@ const footerItems = [
 
 const Footer = () => {
   const navTheme = useTheme();
-  const isMobile = useMediaQuery(navTheme.breakpoints.down('md'));
+  const isMobile = useMediaQuery(navTheme.breakpoints.down('sm'));
+  const { contextTheme } = useContextTheme();
 
   return (
     <div className='app__footer app__flex'>
-      <Stack direction={isMobile ? "column" : "row"} spacing={2} width={'100%'}>
+      <Stack direction={isMobile ? "column" : "row"} spacing={2} width={'100%'} 
+      // style={{ backgroundColor: '#3CD6EB' }}
+      >
         <div className='app__footer-desc'>
           <h4>Ajayi Olalekan Bamidele</h4>
           <p>A passionate Frontend React Developer based in Lagos, Nigeria. Building the Frontend of Web and Mobile Applications that leads to the success of the overall product.</p>
@@ -63,7 +68,10 @@ const Footer = () => {
       </Stack>
       <div className="divider" />
       <div className="copyright">
-        <p className="p-text">© Ajayi Olalekan Bamidele 2023</p>
+        <p className="p-text">© Ajayi Olalekan B. 2023</p>
+        <div>
+          <WebsiteCarbonBadge url='lexy-portfolio-frontend.vercel.app' co2="0.16" percentage="84" dark={contextTheme === "dark" ? true : false} />
+        </div>
       </div>
 
     </div>
