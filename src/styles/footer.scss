@@ -106,5 +106,21 @@
                 font-family: 'Oswald', sans-serif;
             }
         }
+
+        .copyright {
+            width: 100%;
+            padding: 2rem 0 0;
+            gap: 5px;
+            display: flex;
+            flex-direction: column-reverse;
+            justify-content: space-between;
+            align-items: center;
+    
+            p, div {
+                font-weight: 600;
+                // color: #222;
+                font-family: 'Oswald', sans-serif;
+            }
+        }
     }
 }

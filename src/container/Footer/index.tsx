@@ -68,7 +68,7 @@ const Footer = () => {
       </Stack>
       <div className="divider" />
       <div className="copyright">
-        <p className="p-text">© Ajayi Olalekan B. 2023</p>
+        <p className="p-text">© Ajayi Olalekan Bamidele 2023</p>
         <div>
           <WebsiteCarbonBadge url='lexy-portfolio-frontend.vercel.app' co2="0.16" percentage="84" dark={contextTheme === "dark" ? true : false} />
         </div>
