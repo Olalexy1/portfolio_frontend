@@ -39,21 +39,18 @@ const NavBar = () => {
   const navTheme = useTheme();
   const isMobile = useMediaQuery(navTheme.breakpoints.down('md'));
 
-  // const [theme, setTheme] = useState('light');
   const { contextTheme, setContextTheme } = useContextTheme();
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
       const storedTheme = localStorage.getItem('theme');
       if (storedTheme) {
-        // setTheme(storedTheme);
         setContextTheme(storedTheme);
       }
     }
   }, []);
 
   const toggleTheme = () => {
-    // setTheme((prev) => (prev === "light" ? "dark" : "light"))
     setContextTheme((prev) => (prev === "light" ? "dark" : "light"))
   };
 
@@ -108,7 +105,7 @@ const NavBar = () => {
         {menuItems.map((item, index) => (
           <NextLink
             onClick={() => setActiveLink(index)}
-            aria-label={`Aria-${item}`}
+            aria-label={`Link to ${item.text}`}
             className={myStyles.links}
             style={index === activeLink ? { color: '#3CD6EB' } : {}}
             key={`link-${item}`}
@@ -160,7 +157,7 @@ const NavBar = () => {
             <NextLink
               key={index}
               onClick={() => handleActiveLink(index)}
-              aria-label={`Aria-${item}`}
+              aria-label={`Link to ${item.text}`}
               className={`${myStyles.links} ${myStyles.links_mobile}`}
               style={index === activeLink ? { color: '#3CD6EB' } : {}}
               href={`#${item.text.toLowerCase()}`}>

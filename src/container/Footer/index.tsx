@@ -59,7 +59,7 @@ const Footer = () => {
             {
               footerItems?.map((item, index) => (
                 <li key={index}>
-                  <NextLink href={item.link} target={item.link === "#portfolio" ? "_self" : "_blank"}>{item.icon} &nbsp; {item.text}</NextLink>
+                  <NextLink href={item.link} target={item.link === "#portfolio" ? "_self" : "_blank"} aria-label={`Link to ${item.text}`}>{item.icon} &nbsp; {item.text}</NextLink>
                 </li>
               ))
             }

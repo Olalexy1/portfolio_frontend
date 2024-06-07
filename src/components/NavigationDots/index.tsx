@@ -9,6 +9,7 @@ const NavigationDots = ({ active }: any) => (
         key={item + index}
         className="app__navigation-dot"
         style={active === item ? { backgroundColor: '#3CD6EB' } : {}}
+        aria-label={active === item ? `Active Section Navigation Dot - ${item}` : `Section Navigation Dot for - ${item}`}
       />
     ))}
   </div>

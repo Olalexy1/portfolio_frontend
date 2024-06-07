@@ -45,7 +45,7 @@ const Skills: React.FC = () => {
                   src={urlFor(skill.icon).url()}
                   alt={skill.name} />
               </div>
-              <p className="p-text">{skill.name}</p>
+              <p className="p-text" aria-label={`${skill.name}`}>{skill.name}</p>
             </motion.div>
           ))}
         </motion.div>
