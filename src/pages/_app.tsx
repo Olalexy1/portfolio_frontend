@@ -11,7 +11,8 @@ import '@/styles/project.scss';
 import type { AppProps } from 'next/app';
 import LoadingScreen from '@/components/Loader';
 import { QueryClient, QueryClientProvider } from 'react-query';
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/router';
+import { ThemeProvider } from '@/context';
 
 const queryClient = new QueryClient();
 
@@ -39,6 +40,8 @@ export default function App({ Component, pageProps }: AppProps) {
 
   return <> {loading ? <LoadingScreen /> :
     <QueryClientProvider client={queryClient}>
-      <Component {...pageProps} />
+      <ThemeProvider>
+        <Component {...pageProps} />
+      </ThemeProvider>
     </QueryClientProvider>} </>
 }

@@ -83,7 +83,7 @@ const Header: React.FC = () => {
 
                     <div className="tag-cmp app__flex">
                         <p className='p-text'>
-                            A passionate Frontend React Developer based in Lagos, Nigeria. Building the Frontend of Web and Mobile Applications that leads to the success of the overall product.
+                            A passionate Frontend React Developer. Building the Frontend of Web and Mobile Applications that leads to the success of the overall product.
                         </p>
                     </div>
 
@@ -97,7 +97,7 @@ const Header: React.FC = () => {
                 transition={{ duration: 0.5, delayChildren: 0.5 }}
                 className="app__header-img"
             >
-                <Image src={images.olaImg} alt="profile_bg" />
+                <Image src={images.olaImg} alt="profile_bg" loading='lazy'/>
             </motion.div>
 
             <motion.div
