@@ -147,7 +147,7 @@ const Contact: React.FC = () => {
                         height={45}
                         src={images.email}
                         alt='email' />
-                    <a href="mailto:ajayiolalekan729@gmail.com">ajayiolalekan729@gmail.com</a>
+                    <a href="mailto:ajayiolalekan729@gmail.com" aria-label='ajayiolalekan729@gmail.com'>ajayiolalekan729@gmail.com</a>
                 </div>
                 <div className="app__contact-card">
                     <Image
@@ -155,7 +155,7 @@ const Contact: React.FC = () => {
                         height={45}
                         src={images.phone}
                         alt='mobile' />
-                    <a href="tel: +2348188394639">+2348188394639</a>
+                    <a href="tel: +2348188394639" aria-label='+2348188394639'>+2348188394639</a>
                 </div>
             </div>
             {!isFormSubmitted ? (
