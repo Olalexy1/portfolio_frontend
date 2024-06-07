@@ -112,7 +112,7 @@ const Projects: React.FC = () => {
 
                                 {
                                     project.projectLink && (
-                                        <Link href={project?.projectLink === 'https://lexy-portfolio-frontend.vercel.app/' ? '#home' : project?.projectLink} target={project?.projectLink === 'https://lexy-portfolio-frontend.vercel.app/' ? "_self" : "_blank"} rel="noreferrer">
+                                        <Link href={project?.projectLink === 'https://lexy-portfolio-frontend.vercel.app/' ? '#home' : project?.projectLink} target={project?.projectLink === 'https://lexy-portfolio-frontend.vercel.app/' ? "_self" : "_blank"} rel="noreferrer" aria-label={`Link to ${project.name} website`}>
                                             <motion.div
                                                 whileInView={{ scale: [0, 1] }}
                                                 whileHover={{ scale: [1, 0.9] }}
@@ -135,7 +135,7 @@ const Projects: React.FC = () => {
                                         <AiOutlineLink />
                                     </motion.div>
                                 </Link> */}
-                                <Link href={project?.codeLink} target="_blank" rel="noreferrer">
+                                <Link href={project?.codeLink} target="_blank" rel="noreferrer" aria-label={`Link to ${project.name} github`}>
                                     <motion.div
                                         whileInView={{ scale: [0, 1] }}
                                         whileHover={{ scale: [1, 0.9] }}
@@ -147,7 +147,7 @@ const Projects: React.FC = () => {
                                 </Link>
 
                                 {project.tags.includes('Mobile App') && (
-                                    <Link href={project?.androidLink || '#'} target={"_blank"} rel="noreferrer">
+                                    <Link href={project?.androidLink || '#'} target={"_blank"} rel="noreferrer" aria-label={`Link to ${project.name} APK download`}>
                                         <motion.div
                                             whileInView={{ scale: [0, 1] }}
                                             whileHover={{ scale: [1, 0.9] }}
@@ -273,7 +273,7 @@ const Projects: React.FC = () => {
                                     {
                                         selectedProject?.projectLink && (
                                             <li>
-                                                <Link href={selectedProject?.projectLink} target={"_blank"} rel="noreferrer">
+                                                <Link href={selectedProject?.projectLink} target={"_blank"} rel="noreferrer" aria-label={`Link to ${selectedProject.name} website`}>
                                                     <motion.div
                                                         whileInView={{ scale: [0, 1] }}
                                                         whileHover={{ scale: [1, 0.9] }}
@@ -288,7 +288,7 @@ const Projects: React.FC = () => {
                                         )
                                     }
                                     <li>
-                                        <Link href={selectedProject?.codeLink} target={"_blank"} rel="noreferrer">
+                                        <Link href={selectedProject?.codeLink} target={"_blank"} rel="noreferrer" aria-label={`Link to ${selectedProject.name} github`}>
                                             <motion.div
                                                 whileInView={{ scale: [0, 1] }}
                                                 whileHover={{ scale: [1, 0.9] }}
@@ -303,7 +303,7 @@ const Projects: React.FC = () => {
                                     {
                                         selectedProject.figmaLink && (
                                             <li>
-                                                <Link href={selectedProject?.figmaLink} target={"_blank"} rel="noreferrer">
+                                                <Link href={selectedProject?.figmaLink} target={"_blank"} rel="noreferrer" aria-label={`Link to ${selectedProject.name} figma`}>
                                                     <motion.div
                                                         whileInView={{ scale: [0, 1] }}
                                                         whileHover={{ scale: [1, 0.9] }}
@@ -321,7 +321,7 @@ const Projects: React.FC = () => {
 
                                         <>
                                             <li>
-                                                <Link href={selectedProject?.androidLink || '#'} target={"_blank"} rel="noreferrer">
+                                                <Link href={selectedProject?.androidLink || '#'} target={"_blank"} rel="noreferrer" aria-label={`Link to ${selectedProject.name} APK download`}>
                                                     <motion.div
                                                         whileInView={{ scale: [0, 1] }}
                                                         whileHover={{ scale: [1, 0.9] }}
