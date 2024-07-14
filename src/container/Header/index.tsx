@@ -24,8 +24,8 @@ const Header: React.FC = () => {
     const Typewriter = () => {
         const [text, setText] = useState('');
         const [isDeleting, setIsDeleting] = useState(false);
-        const [typingSpeed, setTypingSpeed] = useState(100); // Adjust typing speed here
-        const phrases = ['Ajayi Olalekan', 'Frontend Developer', 'Mobile Developer']; // Array of phrases to display
+        const [typingSpeed, setTypingSpeed] = useState(200);
+        const phrases = ['Ajayi Olalekan', 'Web Developer', 'Mobile Developer', 'FullStack Developer']; 
 
         useEffect(() => {
             const timer = setTimeout(() => {
@@ -43,7 +43,7 @@ const Header: React.FC = () => {
 
                 if (text === currentPhrase) {
                     setIsDeleting(true);
-                    setTypingSpeed(200); // Adjust delay before deleting here
+                    setTypingSpeed(300); // Adjust delay before deleting here
                 }
             } else {
                 setText(currentPhrase.substring(0, text.length - 1));
@@ -51,7 +51,7 @@ const Header: React.FC = () => {
                 if (text === '') {
                     setIsDeleting(false);
                     setCurrentIndex((prevIndex) => (prevIndex + 1) % phrases.length);
-                    setTypingSpeed(200); // Adjust typing speed after deleting here
+                    setTypingSpeed(300); // Adjust typing speed after deleting here
                 }
             }
         };

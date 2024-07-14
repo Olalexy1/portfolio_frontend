@@ -20,6 +20,7 @@ import { images } from '@/util';
 import Image from "next/image";
 import LightModeOutlinedIcon from "@mui/icons-material/LightModeOutlined";
 import DarkModeOutlinedIcon from "@mui/icons-material/DarkModeOutlined";
+import { usePathname } from 'next/navigation';
 
 const styles = {
   appBar: {
@@ -34,12 +35,41 @@ const styles = {
   }
 };
 
+const scrollToTop = () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+};
+
 const NavBar = () => {
   const [isDrawerOpen, setDrawerOpen] = useState(false);
   const navTheme = useTheme();
   const isMobile = useMediaQuery(navTheme.breakpoints.down('md'));
+  const [scrolled, setScrolled] = useState(false);
+  const pathname = usePathname()
 
   const { contextTheme, setContextTheme } = useContextTheme();
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollTop = window.scrollY;
+      if (scrollTop > 15) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+
+  useEffect(() => {
+    if (pathname === '/') {
+      scrollToTop();
+    }
+
+  }, [pathname]);
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -48,6 +78,7 @@ const NavBar = () => {
         setContextTheme(storedTheme);
       }
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const toggleTheme = () => {
@@ -69,6 +100,15 @@ const NavBar = () => {
   const handleActiveLink = (index: any) => {
     setActiveLink(index)
     setDrawerOpen(!isDrawerOpen);
+  }
+
+  const handleActiveLinkWeb = (index: any, href: string, event: any) => {
+    setActiveLink(index)
+
+    if (href === '/' && pathname === '/') {
+      event.preventDefault();
+      scrollToTop();
+    }
   }
 
   const menuItems = [
@@ -104,7 +144,8 @@ const NavBar = () => {
       <nav className={myStyles.navItems}>
         {menuItems.map((item, index) => (
           <NextLink
-            onClick={() => setActiveLink(index)}
+            // onClick={() => setActiveLink(index)}
+            onClick={(e) => handleActiveLinkWeb(index, item.link, e)}
             aria-label={`Link to ${item.text}`}
             className={myStyles.links}
             style={index === activeLink ? { color: '#3CD6EB' } : {}}
@@ -133,7 +174,7 @@ const NavBar = () => {
 
   return (
     <>
-      <div className={myStyles.navBar} style={!isMobile ? styles.appBar : styles.appBarAlt}>
+      <div className={`${myStyles.navBar} ${scrolled ? 'glassmorphism' : 'bg-transparent'}`} style={!isMobile ? styles.appBar : styles.appBarAlt}>
         <NextLink href={"/"} className={myStyles.links}>
           <Image src={contextTheme === 'light' ? images.olaDevLogoLight : images.olaDevLogoDark} alt="logo"></Image>
         </NextLink>
