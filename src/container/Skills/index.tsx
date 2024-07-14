@@ -32,8 +32,6 @@ const Skills: React.FC = () => {
 
   }, []);
 
-  console.log(skills, 'see skills')
-
   // const reducedSkills = skills.slice(0,10)
 
   return (
