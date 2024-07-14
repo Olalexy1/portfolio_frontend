@@ -28,11 +28,7 @@ const About: React.FC = () => {
             <div className="app__profiles">
                 {abouts.map((about, index) => (
                     <Tilt
-                        perspective={500}
-                        // glareEnable={true}
-                        // glareMaxOpacity={0.45}
-                    // scale={1.02}
-                    >
+                        perspective={500}>
                         <motion.div
                             whileInView={{ opacity: 1 }}
                             whileHover={{ scale: 1.1 }}
