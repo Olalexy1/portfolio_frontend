@@ -28,6 +28,7 @@ const About: React.FC = () => {
             <div className="app__profiles">
                 {abouts.map((about, index) => (
                     <Tilt
+                        key={about.title + index}
                         perspective={500}>
                         <motion.div
                             whileInView={{ opacity: 1 }}
