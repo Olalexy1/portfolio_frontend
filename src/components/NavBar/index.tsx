@@ -178,14 +178,17 @@ const NavBar = () => {
         <NextLink href={"/"} className={myStyles.links}>
           <Image src={contextTheme === 'light' ? images.olaDevLogoLight : images.olaDevLogoDark} alt="logo"></Image>
         </NextLink>
-        <Box>
+        {/* <Box>
           {!isMobile && renderDesktopMenuItems()}
           {isMobile && renderMobileMenuItems()}
+        </Box> */}
+        <Box>
+          {!isMobile ? renderDesktopMenuItems() : renderMobileMenuItems()}
         </Box>
       </div>
 
       <Drawer className={myStyles.customDrawer} anchor="left" open={isMobile ? isDrawerOpen : false} onClose={toggleDrawer}>
-        <div className={myStyles.mobileNavbar} style={contextTheme === 'dark' ? { backgroundColor: '#333', color: '#fff' } : { backgroundColor: '#fff', color: '#000' }}>
+        <div className={myStyles.mobileNavbar} style={contextTheme === 'dark' ? { backgroundColor: '#000', color: '#fff' } : { backgroundColor: '#fff', color: '#000' }}>
           <div className={myStyles.customLogoContainer}>
             <NextLink href={"/"} className={myStyles.links}>
               <Image src={contextTheme === 'light' ? images.olaDevLogoLight : images.olaDevLogoDark} alt="logo"></Image>
