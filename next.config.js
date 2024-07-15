@@ -7,11 +7,11 @@ module.exports = nextConfig
 
 const path = require('path')
 
-module.exports = {
-  sassOptions: {
-    includePaths: [path.join(__dirname, 'myStyles')],
-  },
-}
+// module.exports = {
+//   sassOptions: {
+//     includePaths: [path.join(__dirname, 'myStyles')],
+//   },
+// }
 
 module.exports = {
   images: {
@@ -22,6 +22,10 @@ module.exports = {
       },
     ],
   },
+  sassOptions: {
+    includePaths: [path.join(__dirname, 'myStyles')],
+  },
+  transpilePackages: ['three'],
 }
 
 require('dotenv').config();

@@ -41,7 +41,7 @@ const Projects: React.FC = () => {
 
 
     useEffect(() => {
-        const query = `*[_type == "projects" && !(_id in path("drafts.**"))] | order(_createdAt desc)`
+        const query = `*[_type == "projects" && !(_id in path("drafts.**"))] | order(priority desc, _updatedAt desc)`
 
         client.fetch<ProjectData[]>(query).then((data) => {
             setProjects(data);

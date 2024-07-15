@@ -10,7 +10,7 @@ interface AboutData {
 }
 
 const fetchAbouts = async () => {
-  const query = '*[_type == "about"]';
+  const query = '*[_type == "about"] | order(_createdAt asc)';
   const data = await client.fetch<AboutData[]>(query);
   return data;
 };
