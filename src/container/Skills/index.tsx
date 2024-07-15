@@ -4,6 +4,10 @@ import { AppWrap, MotionWrap } from '@/components/Wrapper';
 import { urlFor, client } from '../../client';
 import Image from 'next/image';
 import { BallCanvas } from '@/components/canvas';
+import {
+  useTheme,
+  useMediaQuery,
+} from '@mui/material';
 interface SkillData {
   _type: string;
   name: string;
@@ -14,6 +18,8 @@ interface SkillData {
 const Skills: React.FC = () => {
   const [skills, setSkills] = useState<SkillData[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+  const mobileTheme = useTheme();
+  const isMobile = useMediaQuery(mobileTheme.breakpoints.down('md'));
 
   useEffect(() => {
 
@@ -46,33 +52,45 @@ const Skills: React.FC = () => {
           </> :
 
           <motion.div className="app__skills-list">
-            {/* {skills.map((skill) => (
-              <motion.div
-                whileInView={{ opacity: [0, 1] }}
-                transition={{ duration: 0.5 }}
-                className="app__skills-item app__flex"
-                key={skill.name}
 
-              >
-                <div
-                  className="app__flex"
-                // style={{ backgroundColor: skill.bgColor }}
-                >
-                  <Image
-                    width={45}
-                    height={45}
-                    src={urlFor(skill.icon).url()}
-                    alt={skill.name} />
-                </div>
-                <p className="p-text" aria-label={`${skill.name}`}>{skill.name}</p>
-              </motion.div>
-            ))} */}
+            {isMobile ?
 
-            {skills.map((skill) => (
-              <div className='ball' key={skill.name}>
-                <BallCanvas icon={urlFor(skill.icon).url()} />
-              </div>
-            ))}
+              <>
+                {skills.map((skill) => (
+                  <motion.div
+                    whileInView={{ opacity: [0, 1] }}
+                    transition={{ duration: 0.5 }}
+                    className="app__skills-item app__flex"
+                    key={skill.name}
+
+                  >
+                    <div
+                      className="app__flex"
+                    // style={{ backgroundColor: skill.bgColor }}
+                    >
+                      <Image
+                        width={45}
+                        height={45}
+                        src={urlFor(skill.icon).url()}
+                        alt={skill.name} />
+                    </div>
+                    <p className="p-text" aria-label={`${skill.name}`}>{skill.name}</p>
+                  </motion.div>
+                ))}
+              </>
+              :
+              <>
+                {skills.map((skill) => (
+                  <div key={skill.name} className="app__flex">
+                    <div className='ball' >
+                      <BallCanvas icon={urlFor(skill.icon).url()} />
+                      <p className="p-text" style={{ textAlign: 'center'}} aria-label={`${skill.name}`}>{skill.name}</p>
+                    </div>
+                  </div>
+                ))}
+              </>
+
+            }
           </motion.div>
         }
       </div>
