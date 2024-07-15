@@ -172,16 +172,16 @@ const NavBar = () => {
     );
   };
 
+  const navBarClass = `${myStyles.navBar} ${scrolled ? 'glassmorphism' : 'bg-transparent'}`;
+  const appBarStyle = !isMobile ? styles.appBar : styles.appBarAlt;
+  const logoSrc = contextTheme === 'light' ? images.olaDevLogoLight : images.olaDevLogoDark;
+
   return (
     <>
-      <div className={`${myStyles.navBar} ${scrolled ? 'glassmorphism' : 'bg-transparent'}`} style={!isMobile ? styles.appBar : styles.appBarAlt}>
-        <NextLink href={"/"} className={myStyles.links}>
-          <Image src={contextTheme === 'light' ? images.olaDevLogoLight : images.olaDevLogoDark} alt="logo"></Image>
+      <div className={navBarClass} style={appBarStyle}>
+        <NextLink href="/" className={myStyles.links}>
+          <Image src={logoSrc} alt="logo" />
         </NextLink>
-        {/* <Box>
-          {!isMobile && renderDesktopMenuItems()}
-          {isMobile && renderMobileMenuItems()}
-        </Box> */}
         <Box>
           {!isMobile ? renderDesktopMenuItems() : renderMobileMenuItems()}
         </Box>
