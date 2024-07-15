@@ -1,9 +1,8 @@
 import Head from 'next/head'
-import Layout from './layout';
 import { Header, About, Projects, Skills, Contact, Footer } from '@/container';
 import NavBar from '@/components/NavBar';
 import { StarsCanvas } from "@/components/canvas";
-import { Metadata } from 'next'
+import { Metadata } from 'next';
 
 // export const metadata: Metadata = {
 //   title: 'Olalekan Ajayi',
@@ -25,7 +24,6 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <StarsCanvas />
-      <Layout>
         <NavBar />
         <Header />
         <About />
@@ -33,7 +31,6 @@ export default function Home() {
         <Skills />
         <Contact />
         <Footer />
-      </Layout>
     </section>
   )
 }
