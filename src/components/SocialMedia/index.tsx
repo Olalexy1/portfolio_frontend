@@ -1,6 +1,7 @@
 import { Link } from '@mui/material';
 import React from 'react';
 import { BsTwitter, BsLinkedin, BsGithub, BsWhatsapp } from 'react-icons/bs';
+import { FaXTwitter } from "react-icons/fa6"
 
 const SocialMedia = () => (
   <div className="app__social">
@@ -16,7 +17,7 @@ const SocialMedia = () => (
     </div>
     <div>
       <Link href="https://twitter.com/Olalexy007" color="inherit" underline="none" className='socialIcon' aria-label='Twitter'>
-        <BsTwitter />
+        <FaXTwitter />
       </Link>
     </div>
     <div>
