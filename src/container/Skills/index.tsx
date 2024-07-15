@@ -38,7 +38,6 @@ const Skills: React.FC = () => {
 
   }, []);
 
-  // const reducedSkills = skills.slice(0,10)
 
   return (
     <>
@@ -81,7 +80,7 @@ const Skills: React.FC = () => {
               :
               <>
                 {skills.map((skill) => (
-                  <div key={skill.name} className="app__flex">
+                  <div key={skill.name} className="app__flex" style={{ marginBottom: '20px'}}>
                     <div className='ball' >
                       <BallCanvas icon={urlFor(skill.icon).url()} />
                       <p className="p-text" style={{ textAlign: 'center'}} aria-label={`${skill.name}`}>{skill.name}</p>
