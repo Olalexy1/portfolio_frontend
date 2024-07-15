@@ -174,24 +174,22 @@ const NavBar = () => {
 
   const navBarClass = `${myStyles.navBar} ${scrolled ? 'glassmorphism' : 'bg-transparent'}`;
   const appBarStyle = !isMobile ? styles.appBar : styles.appBarAlt;
-  const logoSrc = contextTheme === 'light' ? images.olaDevLogoLight : images.olaDevLogoDark;
+  // const logoSrc = contextTheme === 'light' ? images.olaDevLogoLight : images.olaDevLogoDark;
 
   return (
     <>
       <div className={navBarClass} style={appBarStyle}>
         <NextLink href="/" className={myStyles.links}>
-          <Image src={logoSrc} alt="logo" />
+          <Image src={images.lexyDev} alt="logo" />
         </NextLink>
-        <Box>
-          {!isMobile ? renderDesktopMenuItems() : renderMobileMenuItems()}
-        </Box>
+        {!isMobile ? renderDesktopMenuItems() : renderMobileMenuItems()}
       </div>
 
       <Drawer className={myStyles.customDrawer} anchor="left" open={isMobile ? isDrawerOpen : false} onClose={toggleDrawer}>
         <div className={myStyles.mobileNavbar} style={contextTheme === 'dark' ? { backgroundColor: '#000', color: '#fff' } : { backgroundColor: '#fff', color: '#000' }}>
           <div className={myStyles.customLogoContainer}>
             <NextLink href={"/"} className={myStyles.links}>
-              <Image src={contextTheme === 'light' ? images.olaDevLogoLight : images.olaDevLogoDark} alt="logo"></Image>
+              <Image src={images.lexyDev} alt="logo"></Image>
             </NextLink>
             <IconButton edge="start" color="inherit" onClick={toggleDrawer}>
               <CloseIcon />

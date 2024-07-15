@@ -17,12 +17,13 @@ import tailwind from '../assets/tailwind.png';
 import olaImg from '../assets/olaImgMinNew.png';
 import olaDevLogoDark from '../assets/olaDevLogoAlt.png';
 import olaDevLogoLight from '../assets/olaDevLogo.png';
+import lexyDev from '../assets/lexydev-logo.png';
 import preloader from '../assets/animatedPreloaderWhiteBg.gif';
 
 import mobileFrame from '../assets/mobile.png';
 import laptopFrame from '../assets/laptop.png';
 
-export default {
+const images = {
   email,
   phone,
   api,
@@ -43,5 +44,8 @@ export default {
   preloader,
   mobileFrame,
   laptopFrame,
-  tailwind
+  tailwind,
+  lexyDev
 };
+
+export default images;
